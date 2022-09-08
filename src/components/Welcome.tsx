@@ -27,7 +27,7 @@ class Welcome extends React.Component<IWelcome> {
         <Container  >
           <Row>
             <Col >
-              <Card >
+              <Card className='card h-100'>
                 <Card.Body>
                   <Card.Title>O Mnie</Card.Title>
                   <Card.Text>
@@ -40,7 +40,7 @@ class Welcome extends React.Component<IWelcome> {
             </Col>
 
             <Col>
-              <Card >
+              <Card className='card h-100'>
                 <Card.Body>
                   <Card.Title>Oferta</Card.Title>
                   <Card.Text>

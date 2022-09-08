@@ -26,8 +26,18 @@ class Calc extends React.Component<IWelcome> {
       <div>
         <Container className='content'>
           <Row>
+            <Card >
+              <Card.Body>
+                <Card.Title>Kalkulator czegos</Card.Title>
+                <Card.Text>
+                  Ten kalkulator liczy cos
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Row>
+          <Row>
             <Col>
-              <Card>
+              <Card className='card h-100'>
                 <Card.Body>
                   <Form>
                     <Form.Group className="mb-3" controlId="Dane1">
@@ -63,7 +73,7 @@ class Calc extends React.Component<IWelcome> {
               </Card>
             </Col>
             <Col>
-              <Card >
+              <Card className='card h-100'>
                 <Card.Body>
                   <Card.Title>Wynik</Card.Title>
                   <Card.Text>
