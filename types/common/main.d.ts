@@ -1,0 +1,3 @@
+interface IWelcome {
+    name?: string;
+  }
