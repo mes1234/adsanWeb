@@ -31,8 +31,9 @@ class Welcome extends React.Component<IWelcome> {
                 <Card.Body>
                   <Card.Title>O Mnie</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                    <img src="ania.jfif" alt="Anna Dabrowicz" width="200" />
+                    <p> Some quick example text to build on the card title and make up the
+                    bulk of the card's content.</p>                 
                   </Card.Text>
                 </Card.Body>
               </Card>
