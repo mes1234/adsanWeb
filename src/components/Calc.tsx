@@ -3,7 +3,7 @@ import '../App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Button, Card, Form } from 'react-bootstrap';
+import { Alert, Badge, Button, Card, Form } from 'react-bootstrap';
 import Cookies from 'universal-cookie';
 
 
@@ -23,21 +23,23 @@ class Calc extends React.Component<IWelcome> {
   }
   render() {
     return (
-      <div>
-        <Container className='content'>
+      <div >
+        <Container>
           <Row>
-            <Card >
+          <Col>
+            <Card>
               <Card.Body>
-                <Card.Title>Kalkulator czegos</Card.Title>
+                <Card.Title>Obliczenia</Card.Title>
                 <Card.Text>
-                  Ten kalkulator liczy cos
+                  Lore ipsum
                 </Card.Text>
               </Card.Body>
             </Card>
+            </Col>
           </Row>
           <Row>
             <Col>
-              <Card className='card h-100'>
+              <Card className='h-100'>
                 <Card.Body>
                   <Form>
                     <Form.Group className="mb-3" controlId="Dane1">
@@ -77,11 +79,12 @@ class Calc extends React.Component<IWelcome> {
                 <Card.Body>
                   <Card.Title>Wynik</Card.Title>
                   <Card.Text>
-                    <p>Wynik :1.23</p>
-                    <p>Wynik :1.23</p>
-                    <p>Wynik :1.23</p>
-                    <p>Wynik :1.23</p>
-                    <p>Wynik :1.23</p>
+                    <p><Badge bg="secondary">Wynik</Badge>  1.23</p>
+                    <p><Badge bg="secondary">Wynik</Badge>  1.23</p>
+                    <p><Badge bg="secondary">Wynik</Badge>  1.23</p>
+                    <p><Badge bg="secondary">Wynik</Badge>  1.23</p>
+                    <p><Badge bg="secondary">Wynik</Badge>  1.23</p>
+                    <p><Badge bg="secondary">Wynik</Badge>  1.23</p>
                   </Card.Text>
                 </Card.Body>
               </Card>

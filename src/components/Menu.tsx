@@ -1,23 +1,24 @@
 import React from 'react';
 import '../App.css';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { Button, Nav } from 'react-bootstrap';
-import Cookies from 'universal-cookie';
+import { Badge,  Nav, NavbarBrand  } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 class Menu extends React.Component {
     render() {
         return (
-            <div className='menu'>
+            <div className='header'>
                 <Container >
-                    <Nav variant="tabs" defaultActiveKey="/home">
+                    <Nav variant="" defaultActiveKey="/home">
+                        <NavbarBrand className='logo' >
+                        ADSAN
+                            </NavbarBrand>
                         <Nav.Item>
-                            <Nav.Link href="/">Info</Nav.Link>
+                            <Nav.Link href="/"><Badge bg='primary'>Info</Badge></Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link href="/calc">Kalkulator</Nav.Link>
+                            <Nav.Link href="/calc"><Badge bg='primary'>Kalkulator</Badge></Nav.Link>
                         </Nav.Item>
                     </Nav>
                 </Container>

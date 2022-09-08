@@ -1,36 +1,36 @@
 body {
   background-image: url("rain.jpg");
-  background-color: #cccccc;
+  background-color: white;
   background-size: 100% ;
   background-repeat: no-repeat;
  }
-
-.global {
-  margin-left: auto;
-  margin-right: auto;
-  width: 95%;
-}
-
-
-.content {
-  padding-top: 1rem;
-}
-
-.menu {
-  padding-top: 1rem;
-}
 
 .footer {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: red;
-  color: rgb(95, 50, 50);
   text-align: center;
+}
+
+
+.header {
+  left: 0;
+  top: 100;
+  width: 100%; 
+  text-align: center;
+}
+
+.logo {
+  font-weight: bolder;
 }
 
 * {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border-radius: 0 !important;
+  padding: 10;
 }
+
+.cardImage {
+  width: '50px';
+  }
