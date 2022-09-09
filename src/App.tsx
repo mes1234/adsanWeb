@@ -13,6 +13,7 @@ import {
 import Menu from './components/Menu';
 import { Row } from 'react-bootstrap';
 import Footer from './components/Footer';
+import Contact from './components/Contact';
 function App() {
   return (
     <Container fluid>
@@ -27,6 +28,8 @@ function App() {
                 <Route path="/" element={<Welcome name="Authme"></Welcome>}>
                 </Route>
                 <Route path="/calcs" element={<Calc name="Authme"></Calc>}>
+                </Route>
+                <Route path="/contact" element={<Contact name="Authme"></Contact>}>
                 </Route>
               </Routes>
             </Container>
