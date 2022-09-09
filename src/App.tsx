@@ -15,18 +15,18 @@ import { Row } from 'react-bootstrap';
 import Footer from './components/Footer';
 function App() {
   return (
-    <Container  className="global">
+    <Container fluid>
       <Router>
         <div  >
-          <Row>
+          <Row >
             <Menu></Menu>
           </Row>
           <Row>
-            <Container >
+            <Container>
               <Routes>
                 <Route path="/" element={<Welcome name="Authme"></Welcome>}>
                 </Route>
-                <Route path="/calc" element={<Calc name="Authme"></Calc>}>
+                <Route path="/calcs" element={<Calc name="Authme"></Calc>}>
                 </Route>
               </Routes>
             </Container>

@@ -26,47 +26,47 @@ class Calc extends React.Component<IWelcome> {
       <div >
         <Container>
           <Row>
-          <Col>
-            <Card>
-              <Card.Body>
-                <Card.Title>Obliczenia</Card.Title>
-                <Card.Text>
-                  Lore ipsum
-                </Card.Text>
-              </Card.Body>
-            </Card>
+            <Col>
+              <Card className='card card-common h-100'>
+                <Card.Body>
+                  <Card.Title>Obliczenia</Card.Title>
+                  <Card.Text>
+                    Lore ipsum
+                  </Card.Text>
+                </Card.Body>
+              </Card>
             </Col>
           </Row>
           <Row>
             <Col>
-              <Card className='h-100'>
+              <Card className='card card-common h-100'>
                 <Card.Body>
                   <Form>
-                    <Form.Group className="mb-3" controlId="Dane1">
+                    <Form.Group controlId="Dane1">
                       <Form.Label>Dane 1</Form.Label>
                       <Form.Control type="number" placeholder="1.23" />
-                      <Form.Text className="text-muted">
+                      <Form.Text >
                         Pomocne informacje
                       </Form.Text>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="Dane1">
+                    <Form.Group controlId="Dane1">
                       <Form.Label>Dane 1</Form.Label>
                       <Form.Control type="number" placeholder="1.23" />
-                      <Form.Text className="text-muted">
+                      <Form.Text >
                         Pomocne informacje
                       </Form.Text>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="Dane1">
+                    <Form.Group controlId="Dane1">
                       <Form.Label>Dane 1</Form.Label>
                       <Form.Control type="number" placeholder="1.23" />
-                      <Form.Text className="text-muted">
+                      <Form.Text >
                         Pomocne informacje
                       </Form.Text>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="Dane1">
+                    <Form.Group controlId="Dane1">
                       <Form.Label>Dane 1</Form.Label>
                       <Form.Control type="number" placeholder="1.23" />
-                      <Form.Text className="text-muted">
+                      <Form.Text >
                         Pomocne informacje
                       </Form.Text>
                     </Form.Group>
@@ -75,7 +75,7 @@ class Calc extends React.Component<IWelcome> {
               </Card>
             </Col>
             <Col>
-              <Card className='card h-100'>
+              <Card className='card card-common h-100'>
                 <Card.Body>
                   <Card.Title>Wynik</Card.Title>
                   <Card.Text>
@@ -90,10 +90,8 @@ class Calc extends React.Component<IWelcome> {
               </Card>
             </Col>
           </Row>
-
         </Container>
       </div>
-
     );
   }
 }

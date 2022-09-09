@@ -1,28 +1,26 @@
 import React from 'react';
 import '../App.css';
 import Container from 'react-bootstrap/Container';
-import { Badge,  Nav, NavbarBrand  } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import {  Nav, Navbar } from 'react-bootstrap';
+import { faDroplet } from "@fortawesome/free-solid-svg-icons";
+import { faSquareRootVariable } from "@fortawesome/free-solid-svg-icons";
+import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Menu extends React.Component {
     render() {
         return (
-            <div className='header'>
-                <Container >
-                    <Nav variant="" defaultActiveKey="/home">
-                        <NavbarBrand className='logo' >
-                        ADSAN
-                            </NavbarBrand>
-                        <Nav.Item>
-                            <Nav.Link href="/"><Badge bg='primary'>Info</Badge></Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link href="/calc"><Badge bg='primary'>Kalkulator</Badge></Nav.Link>
-                        </Nav.Item>
+            <Container className='menu '>
+                <Navbar variant="light" className='navbar py-0' >
+                    <Navbar.Brand  href="/"  ><h1 className="logo py-0 "><FontAwesomeIcon icon={faDroplet} /> Adsan</h1></Navbar.Brand>
+                    <Nav >
+                        <Nav.Link href="/"><FontAwesomeIcon icon={faAddressCard} /> Info</Nav.Link>
+                        <Nav.Link href="/calcs"><FontAwesomeIcon icon={faSquareRootVariable} /> Kalkulator</Nav.Link>
+                        <Nav.Link href="/contact"><FontAwesomeIcon icon={faEnvelope} /> Kontakt</Nav.Link>
                     </Nav>
-                </Container>
-            </div >
+                </Navbar>
+            </Container>
         );
     }
 }
