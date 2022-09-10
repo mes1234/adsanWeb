@@ -34,12 +34,12 @@ body {
 }
 
 .card-common {
-  opacity: 85%;
+  opacity: 95%;
   margin-top: 1rem;
 }
 
 .card-image-common {
-  opacity: 100% !important;
+  opacity: 1 !important;
   width: 200px;
   height: auto;
 }
