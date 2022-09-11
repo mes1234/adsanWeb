@@ -18,7 +18,6 @@ function App() {
   return (
     <Container fluid>
       <Router>
-        <div  >
           <Row >
             <Menu></Menu>
           </Row>
@@ -37,7 +36,6 @@ function App() {
           <Row>
             <Footer></Footer>
           </Row>
-        </div>
       </Router>
     </Container>
   );
