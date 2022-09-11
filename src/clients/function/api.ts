@@ -104,6 +104,32 @@ export interface InboundDto {
     floatValue?: number;
 }
 
+/**
+ * 
+ * @export
+ * @interface OutboundDto
+ */
+export interface OutboundDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof OutboundDto
+     */
+    intValue?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof OutboundDto
+     */
+    stringValue?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof OutboundDto
+     */
+    floatValue?: number;
+}
+
 
 /**
  * NameApi - fetch parameter creator
@@ -153,7 +179,7 @@ export const NameApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        run(body?: InboundDto, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+        run(body?: InboundDto, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<OutboundDto> {
             const localVarFetchArgs = NameApiFetchParamCreator(configuration).run(body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
