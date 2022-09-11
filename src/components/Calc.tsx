@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -12,9 +12,28 @@ import { Configuration } from '../clients/function';
 
 const API_GRPC = 'https://smartfirdge.azurewebsites.net'
 
+interface IDataInputs {
+  intValueIn: number,
+  floatValueIn: number,
+  stringValueIn: string
+
+  intValueOut: number,
+  floatValueOut: number,
+  stringValueOut: string
+}
+
+class Calc extends React.Component<IWelcome, IDataInputs> {
 
 
-class Calc extends React.Component<IWelcome> {
+  state: IDataInputs = {
+    intValueIn: 11,
+    floatValueIn: 11.11,
+    stringValueIn: "none",
+    intValueOut: 11,
+    floatValueOut: 11.11,
+    stringValueOut: "none"
+  }
+
   async calculate() {
 
     const config: Configuration = {
@@ -35,6 +54,13 @@ class Calc extends React.Component<IWelcome> {
       .catch((error) => {
         console.log(error);
       });
+
+    this.setState({
+      intValueOut: this.state.intValueIn * 2,
+      floatValueOut: this.state.floatValueIn * 2,
+      stringValueOut: this.state.stringValueIn.toUpperCase()
+
+    })
 
   }
   render() {
@@ -57,31 +83,33 @@ class Calc extends React.Component<IWelcome> {
             <Card className='card card-common h-100 border-0'>
               <Card.Header><h2><strong>Parametry</strong></h2></Card.Header>
               <Card.Body>
-                <Form onChange={this.calculate}>
-                  <Form.Group controlId="Dane1">
+                <Form >
+                  <Form.Group controlId="intValue">
                     <Form.Label>Dane 1</Form.Label>
-                    <Form.Control type="number" placeholder="1.23" />
+                    <Form.Control type="number" value={this.state.intValueIn} onChange={(e) => {
+                      this.calculate();
+                      this.setState({ intValueIn: parseInt(e.target.value) });
+                    }} />
                     <Form.Text >
                       Pomocne informacje
                     </Form.Text>
                   </Form.Group>
-                  <Form.Group controlId="Dane1">
+                  <Form.Group controlId="floatValue">
                     <Form.Label>Dane 1</Form.Label>
-                    <Form.Control type="number" placeholder="1.23" />
+                    <Form.Control type="number" value={this.state.floatValueIn} onChange={(e) => {
+                      this.calculate();
+                      this.setState({ floatValueIn: parseFloat(e.target.value) });
+                    }} />
                     <Form.Text >
                       Pomocne informacje
                     </Form.Text>
                   </Form.Group>
-                  <Form.Group controlId="Dane1">
+                  <Form.Group controlId="stringValue">
                     <Form.Label>Dane 1</Form.Label>
-                    <Form.Control type="number" placeholder="1.23" />
-                    <Form.Text >
-                      Pomocne informacje
-                    </Form.Text>
-                  </Form.Group>
-                  <Form.Group controlId="Dane1">
-                    <Form.Label>Dane 1</Form.Label>
-                    <Form.Control type="number" placeholder="1.23" />
+                    <Form.Control type="text" value={this.state.stringValueIn} onChange={(e) => {
+                      this.calculate();
+                      this.setState({ stringValueIn: e.target.value });
+                    }} />
                     <Form.Text >
                       Pomocne informacje
                     </Form.Text>
@@ -96,11 +124,9 @@ class Calc extends React.Component<IWelcome> {
               <Card.Body>
                 <Card.Text>
                   <ListGroup>
-                    <ListGroup.Item><Badge bg="secondary">Wynik</Badge>  1.23</ListGroup.Item>
-                    <ListGroup.Item><Badge bg="secondary">Wynik</Badge>  1.23</ListGroup.Item>
-                    <ListGroup.Item><Badge bg="secondary">Wynik</Badge>  1.23</ListGroup.Item>
-                    <ListGroup.Item><Badge bg="secondary">Wynik</Badge>  1.23</ListGroup.Item>
-                    <ListGroup.Item><Badge bg="secondary">Wynik</Badge>  1.23</ListGroup.Item>
+                    <ListGroup.Item><Badge bg="secondary">intValueIn</Badge>   {this.state.intValueOut}</ListGroup.Item>
+                    <ListGroup.Item><Badge bg="secondary">floatValueOut</Badge>   {this.state.floatValueOut}</ListGroup.Item>
+                    <ListGroup.Item><Badge bg="secondary">stringValueOut</Badge>   {this.state.stringValueOut}</ListGroup.Item>
                   </ListGroup>
                 </Card.Text>
               </Card.Body>
