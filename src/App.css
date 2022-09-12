@@ -39,7 +39,7 @@ body {
 }
 
 .card-image-common {
-  opacity: 1 !important;
+  /* opacity: 1 !important; */
   width: 200px;
   height: auto;
 }
