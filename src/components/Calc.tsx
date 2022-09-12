@@ -10,7 +10,7 @@ import { Configuration } from '../clients/function';
 
 
 // const API = 'http://192.168.0.32:7071/api'
-const API = 'https://developmentfunction.azurewebsites.net'
+const API = 'https://developmentfunction.azurewebsites.net/api'
 
 interface IDataInputs {
   intValueIn: number,
