@@ -30,7 +30,7 @@ class Welcome extends React.Component<IWelcome> {
           <Col md={6} >
             <Card className='card card-common h-100 border-0' >
               <Card.Header><h2><strong>O Mnie</strong></h2></Card.Header>
-              <img src="ania.jpg" className='card-image-common' ></img>
+              <img src="dancing-banana.png" className='card-image-common' ></img>
               <Card.Body>
                 
                 <Card.Text>
