@@ -53,7 +53,6 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
     const config: Configuration = {
       basePath: API
     };
-    alert("I am an alert box!");
 
     const api: NameApi = new NameApi(config);
     const data: InboundDto = {
