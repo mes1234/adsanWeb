@@ -196,7 +196,7 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
                   <ListGroup.Item>objetoscOpadu130lsha: {this.state.objetoscOpadu130lsha}</ListGroup.Item>
                   <ListGroup.Item>objetoscOpadu300lsha: {this.state.objetoscOpadu300lsha}</ListGroup.Item>
                   <ListGroup.Item>objetoscOgroduDeszczowego: {this.state.objetoscOgroduDeszczowego}</ListGroup.Item>
-                  <ListGroup.Item>statusPierwszaFala: {this.state.statusPierwszaFala}</ListGroup.Item>
+                  <ListGroup.Item>statusPierwszaFala: {this.state.statusPierwszaFala.toString()}</ListGroup.Item>
                   <ListGroup.Item>statusOpad130lsha: {this.state.statusOpad130lsha.toString()}</ListGroup.Item>
                   <ListGroup.Item>statusOpad300lsha: {this.state.statusOpad300lsha.toString()}</ListGroup.Item>
                   <ListGroup.Item>calculationStatus: {this.state.calculationStatus.toString()}</ListGroup.Item>

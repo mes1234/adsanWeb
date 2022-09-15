@@ -27,7 +27,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Wip name="Authme"></Wip>}>
               </Route>
-              <Route path="/calcs" element={<Wip name="Authme"></Wip>}>
+              <Route path="/calcs" element={<Calc name="Authme"></Calc>}>
               </Route>
               <Route path="/contact" element={<Wip name="Authme"></Wip>}>
               </Route>
