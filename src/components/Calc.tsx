@@ -9,17 +9,26 @@ import { Configuration } from '../clients/function';
 
 
 
-// const API = 'http://192.168.0.32:7071/api'
-const API = 'https://developmentfunction.azurewebsites.net/api'
+ //const API = 'http://192.168.0.32:7071/api'
+const API = 'https://developmentfunction-dev.azurewebsites.net/api'
 
 interface IDataInputs {
-  intValueIn: number,
-  floatValueIn: number,
-  stringValueIn: string
+  powierzchniaZlewni: number,
+  glebokoscWolna: number,
+  glebokoscOgroduDeszczowego: number,
+  qSplywuDla15lsha: number,
+  qSplywuDla130lsha: number,
+  qSplywuDla300lsha: number,
 
-  intValueOut: number,
-  floatValueOut: number,
-  stringValueOut: string
+  minPowierzchnia: number,
+  objetoscOpaduPierwszaFala: number,
+  objetoscOpadu130lsha: number,
+  objetoscOpadu300lsha: number,
+  objetoscOgroduDeszczowego: number,
+  statusPierwszaFala: boolean,
+  statusOpad130lsha: boolean,
+  statusOpad300lsha: boolean,
+  calculationStatus: number
 }
 
 
@@ -27,24 +36,46 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
 
 
   state: IDataInputs = {
-    intValueIn: 11,
-    floatValueIn: 11.11,
-    stringValueIn: "none",
-    intValueOut: 11,
-    floatValueOut: 11.11,
-    stringValueOut: "none"
+    powierzchniaZlewni: 800.0,
+    glebokoscWolna: 0.1,
+    glebokoscOgroduDeszczowego: 0.5,
+    qSplywuDla15lsha: 1.2,
+    qSplywuDla130lsha: 12,
+    qSplywuDla300lsha: 24,
+
+    minPowierzchnia: 0.0,
+    objetoscOpaduPierwszaFala: 0.0,
+    objetoscOpadu130lsha: 0.0,
+    objetoscOpadu300lsha: 0.0,
+    objetoscOgroduDeszczowego: 0.0,
+    statusPierwszaFala: false,
+    statusOpad130lsha: false,
+    statusOpad300lsha: false,
+    calculationStatus: 1
   }
 
-  private handleIntChange = (e: { currentTarget: { value: string; }; }) => {
-    this.setState({ intValueIn: parseInt(e.currentTarget.value) });
+  private powierzchniaZlewniChange = (e: { currentTarget: { value: string; }; }): void => {
+    this.setState({ powierzchniaZlewni: parseFloat(e.currentTarget.value) });
   };
 
-  private handleFloatChange = (e: { currentTarget: { value: string; }; }): void => {
-    this.setState({ floatValueIn: parseFloat(e.currentTarget.value) });
+  private glebokoscWolnaChange = (e: { currentTarget: { value: string; }; }): void => {
+    this.setState({ glebokoscWolna: parseFloat(e.currentTarget.value) });
   };
 
-  private handleStringChange = (e: { currentTarget: { value: any; }; }): void => {
-    this.setState({ stringValueIn: e.currentTarget.value });
+  private glebokoscOgroduDeszczowegoChange = (e: { currentTarget: { value: string; }; }): void => {
+    this.setState({ glebokoscOgroduDeszczowego: parseFloat(e.currentTarget.value) });
+  };
+
+  private qSplywuDla15lshaChange = (e: { currentTarget: { value: string; }; }): void => {
+    this.setState({ qSplywuDla15lsha: parseFloat(e.currentTarget.value) });
+  };
+
+  private qSplywuDla130lshaChange = (e: { currentTarget: { value: string; }; }): void => {
+    this.setState({ qSplywuDla130lsha: parseFloat(e.currentTarget.value) });
+  };
+
+  private qSplywuDla300lshaChange = (e: { currentTarget: { value: string; }; }): void => {
+    this.setState({ qSplywuDla300lsha: parseFloat(e.currentTarget.value) });
   };
 
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -56,17 +87,27 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
 
     const api: NameApi = new NameApi(config);
     const data: InboundDto = {
-      intValue: this.state.intValueIn,
-      floatValue: this.state.floatValueIn,
-      stringValue: this.state.stringValueIn
+      powierzchniaZlewni: this.state.powierzchniaZlewni,
+      glebokoscWolna: this.state.glebokoscWolna,
+      glebokoscOgroduDeszczowego: this.state.glebokoscOgroduDeszczowego,
+      qSplywuDla15lsha: this.state.qSplywuDla15lsha,
+      qSplywuDla130lsha: this.state.qSplywuDla130lsha,
+      qSplywuDla300lsha: this.state.qSplywuDla300lsha
+
     }
 
     api.run(data)
       .then((result) => {
         this.setState({
-          intValueOut: result.intValue,
-          floatValueOut: result.floatValue,
-          stringValueOut: result.stringValue
+          minPowierzchnia: result.minPowierzchnia,
+          objetoscOpaduPierwszaFala: result.objetoscOpaduPierwszaFala,
+          objetoscOpadu130lsha: result.objetoscOpadu130lsha,
+          objetoscOpadu300lsha: result.objetoscOpadu300lsha,
+          objetoscOgroduDeszczowego: result.objetoscOgroduDeszczowego,
+          statusPierwszaFala: result.statusPierwszaFala,
+          statusOpad130lsha: result.statusOpad130lsha,
+          statusOpad300lsha: result.statusOpad300lsha,
+          calculationStatus: result.calculationStatus
 
         })
       })
@@ -95,27 +136,49 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
               <Card.Header><h2><strong>Parametry</strong></h2></Card.Header>
               <Card.Body>
                 <Form onSubmit={(e) => this.handleSubmit(e)}>
-                  <Form.Group controlId="intValue">
-                    <Form.Label>Dane 1</Form.Label>
-                    <Form.Control type="number" value={this.state.intValueIn} onChange={this.handleIntChange} />
+                  <Form.Group controlId="powierzchniaZlewni">
+                    <Form.Label>powierzchniaZlewni</Form.Label>
+                    <Form.Control type="number" value={this.state.powierzchniaZlewni} onChange={this.powierzchniaZlewniChange} />
                     <Form.Text >
-                      Pomocne informacje
+                      powierzchniaZlewni
                     </Form.Text>
                   </Form.Group>
-                  <Form.Group controlId="floatValue">
-                    <Form.Label>Dane 1</Form.Label>
-                    <Form.Control type="number" value={this.state.floatValueIn} onChange={this.handleFloatChange} />
+                  <Form.Group controlId="glebokoscWolna">
+                    <Form.Label>glebokoscWolna</Form.Label>
+                    <Form.Control type="number" value={this.state.glebokoscWolna} onChange={this.glebokoscWolnaChange} />
                     <Form.Text >
-                      Pomocne informacje
+                      glebokoscWolna
                     </Form.Text>
                   </Form.Group>
-                  <Form.Group controlId="stringValue">
-                    <Form.Label>Dane 1</Form.Label>
-                    <Form.Control type="text" value={this.state.stringValueIn} onChange={this.handleStringChange} />
+                  <Form.Group controlId="glebokoscOgroduDeszczowego">
+                    <Form.Label>glebokoscOgroduDeszczowego</Form.Label>
+                    <Form.Control type="number" value={this.state.glebokoscOgroduDeszczowego} onChange={this.glebokoscOgroduDeszczowegoChange} />
                     <Form.Text >
-                      Pomocne informacje
+                      glebokoscOgroduDeszczowego
                     </Form.Text>
                   </Form.Group>
+                  <Form.Group controlId="qSplywuDla15lsha">
+                    <Form.Label>qSplywuDla15lsha</Form.Label>
+                    <Form.Control type="number" value={this.state.qSplywuDla15lsha} onChange={this.qSplywuDla15lshaChange} />
+                    <Form.Text >
+                      qSplywuDla15lsha
+                    </Form.Text>
+                  </Form.Group>
+                  <Form.Group controlId="qSplywuDla130lsha">
+                    <Form.Label>qSplywuDla130lsha</Form.Label>
+                    <Form.Control type="number" value={this.state.qSplywuDla130lsha} onChange={this.qSplywuDla130lshaChange} />
+                    <Form.Text >
+                      qSplywuDla130lsha
+                    </Form.Text>
+                  </Form.Group>
+                  <Form.Group controlId="qSplywuDla300lsha">
+                    <Form.Label>qSplywuDla300lsha</Form.Label>
+                    <Form.Control type="number" value={this.state.qSplywuDla300lsha} onChange={this.qSplywuDla300lshaChange} />
+                    <Form.Text >
+                      qSplywuDla300lsha
+                    </Form.Text>
+                  </Form.Group>
+
                   <Button variant="primary" type="submit"  >
                     Oblicz
                   </Button>
@@ -128,15 +191,21 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
               <Card.Header><h2><strong>Wyniki</strong></h2></Card.Header>
               <Card.Body>
                 <ListGroup>
-                  <ListGroup.Item>intValueIn  {this.state.intValueOut}</ListGroup.Item>
-                  <ListGroup.Item>floatValueOut   {this.state.floatValueOut}</ListGroup.Item>
-                  <ListGroup.Item>stringValueOut  {this.state.stringValueOut}</ListGroup.Item>
+                  <ListGroup.Item>minPowierzchnia: {this.state.minPowierzchnia}</ListGroup.Item>
+                  <ListGroup.Item>objetoscOpaduPierwszaFala: {this.state.objetoscOpaduPierwszaFala}</ListGroup.Item>
+                  <ListGroup.Item>objetoscOpadu130lsha: {this.state.objetoscOpadu130lsha}</ListGroup.Item>
+                  <ListGroup.Item>objetoscOpadu300lsha: {this.state.objetoscOpadu300lsha}</ListGroup.Item>
+                  <ListGroup.Item>objetoscOgroduDeszczowego: {this.state.objetoscOgroduDeszczowego}</ListGroup.Item>
+                  <ListGroup.Item>statusPierwszaFala: {this.state.statusPierwszaFala}</ListGroup.Item>
+                  <ListGroup.Item>statusOpad130lsha: {this.state.statusOpad130lsha.toString()}</ListGroup.Item>
+                  <ListGroup.Item>statusOpad300lsha: {this.state.statusOpad300lsha.toString()}</ListGroup.Item>
+                  <ListGroup.Item>calculationStatus: {this.state.calculationStatus.toString()}</ListGroup.Item>
                 </ListGroup>
               </Card.Body>
             </Card>
           </Col>
         </Row>
-      </Container>
+      </Container >
     );
   }
 }

@@ -89,19 +89,37 @@ export interface InboundDto {
      * @type {number}
      * @memberof InboundDto
      */
-    intValue?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InboundDto
-     */
-    stringValue?: string;
+    powierzchniaZlewni?: number;
     /**
      * 
      * @type {number}
      * @memberof InboundDto
      */
-    floatValue?: number;
+    glebokoscWolna?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof InboundDto
+     */
+    glebokoscOgroduDeszczowego?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof InboundDto
+     */
+    qSplywuDla15lsha?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof InboundDto
+     */
+    qSplywuDla130lsha?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof InboundDto
+     */
+    qSplywuDla300lsha?: number;
 }
 
 /**
@@ -115,19 +133,71 @@ export interface OutboundDto {
      * @type {number}
      * @memberof OutboundDto
      */
-    intValue?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof OutboundDto
-     */
-    stringValue?: string;
+    minPowierzchnia?: number;
     /**
      * 
      * @type {number}
      * @memberof OutboundDto
      */
-    floatValue?: number;
+    objetoscOpaduPierwszaFala?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof OutboundDto
+     */
+    objetoscOpadu130lsha?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof OutboundDto
+     */
+    objetoscOpadu300lsha?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof OutboundDto
+     */
+    objetoscOgroduDeszczowego?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OutboundDto
+     */
+    statusPierwszaFala?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OutboundDto
+     */
+    statusOpad130lsha?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OutboundDto
+     */
+    statusOpad300lsha?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof OutboundDto
+     */
+    calculationStatus?: OutboundDto.CalculationStatusEnum;
+}
+
+/**
+ * @export
+ * @namespace OutboundDto
+ */
+export namespace OutboundDto {
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum CalculationStatusEnum {
+        NUMBER_1 = <any> 1,
+        NUMBER_2 = <any> 2,
+        NUMBER_3 = <any> 3
+    }
 }
 
 
