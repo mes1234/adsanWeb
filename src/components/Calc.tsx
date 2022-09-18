@@ -1,15 +1,16 @@
-import React, { ChangeEventHandler, FormEventHandler, useState } from 'react';
+import React from 'react';
 import '../App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Badge, Card, Form, ListGroup, Button } from 'react-bootstrap';
+import { Card, Form, ListGroup, Button } from 'react-bootstrap';
 import { NameApi, InboundDto } from "../clients/function/api";
 import { Configuration } from '../clients/function';
 
+var numeral = require('numeral');
 
 
- //const API = 'http://192.168.0.32:7071/api'
+//const API = 'http://192.168.0.32:7071/api'
 const API = 'https://developmentfunction-dev.azurewebsites.net/api'
 
 interface IDataInputs {
@@ -43,12 +44,12 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
     qSplywuDla130lsha: 12,
     qSplywuDla300lsha: 24,
 
-    minPowierzchnia: 0.0,
-    objetoscOpaduPierwszaFala: 0.0,
-    objetoscOpadu130lsha: 0.0,
-    objetoscOpadu300lsha: 0.0,
-    objetoscOgroduDeszczowego: 0.0,
-    statusPierwszaFala: false,
+    minPowierzchnia: 80.0,
+    objetoscOpaduPierwszaFala: 1.20,
+    objetoscOpadu130lsha: 10.80,
+    objetoscOpadu300lsha: 21.60,
+    objetoscOgroduDeszczowego: 8.12,
+    statusPierwszaFala: true,
     statusOpad130lsha: false,
     statusOpad300lsha: false,
     calculationStatus: 1
@@ -77,6 +78,37 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
   private qSplywuDla300lshaChange = (e: { currentTarget: { value: string; }; }): void => {
     this.setState({ qSplywuDla300lsha: parseFloat(e.currentTarget.value) });
   };
+
+  private handleCalculationState = (calcState: number): string => {
+    switch (calcState) {
+      case 1:
+        return 'Wyniki poprawne'
+      case 2:
+        return 'Błąd geometrii zbiornika'
+      case 3:
+        return 'Błąd przepływów'
+      default:
+        return 'Błąd obliczeń'
+    }
+  };
+
+  private handleCalculationStatus = (calcState: number, statusPierwszaFala: boolean, statusOpad130lsha: boolean, statusOpad300lsha: boolean): string => {
+
+    if (calcState != 1)
+      return 'Błąd obliczeń';
+
+    if (statusPierwszaFala && statusOpad130lsha && statusOpad300lsha)
+      return "Zbiornik przyjmie wszystko";
+
+    if (statusPierwszaFala && statusOpad130lsha && !statusOpad300lsha)
+      return "Bedzie ciężko ale da radę";
+
+    if (statusPierwszaFala && !statusOpad130lsha && !statusOpad300lsha)
+      return "Uciekać";
+
+    if (!statusPierwszaFala && !statusOpad130lsha && !statusOpad300lsha)
+      return "Zbiornik nie da rady wogóle";
+  }
 
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -190,17 +222,17 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
             <Card className='card card-common h-100 border-0'>
               <Card.Header><h2><strong>Wyniki</strong></h2></Card.Header>
               <Card.Body>
+                <p><strong>{this.handleCalculationState(this.state.calculationStatus)}</strong></p>
+                <p><strong>{this.handleCalculationStatus(this.state.calculationStatus, this.state.statusPierwszaFala, this.state.statusOpad130lsha, this.state.statusOpad300lsha)}</strong></p>
+
                 <ListGroup>
-                  <ListGroup.Item>minPowierzchnia: {this.state.minPowierzchnia}</ListGroup.Item>
-                  <ListGroup.Item>objetoscOpaduPierwszaFala: {this.state.objetoscOpaduPierwszaFala}</ListGroup.Item>
-                  <ListGroup.Item>objetoscOpadu130lsha: {this.state.objetoscOpadu130lsha}</ListGroup.Item>
-                  <ListGroup.Item>objetoscOpadu300lsha: {this.state.objetoscOpadu300lsha}</ListGroup.Item>
-                  <ListGroup.Item>objetoscOgroduDeszczowego: {this.state.objetoscOgroduDeszczowego}</ListGroup.Item>
-                  <ListGroup.Item>statusPierwszaFala: {this.state.statusPierwszaFala.toString()}</ListGroup.Item>
-                  <ListGroup.Item>statusOpad130lsha: {this.state.statusOpad130lsha.toString()}</ListGroup.Item>
-                  <ListGroup.Item>statusOpad300lsha: {this.state.statusOpad300lsha.toString()}</ListGroup.Item>
-                  <ListGroup.Item>calculationStatus: {this.state.calculationStatus.toString()}</ListGroup.Item>
+                  <ListGroup.Item>minPowierzchnia: {numeral(this.state.minPowierzchnia).format('0.00')}</ListGroup.Item>
+                  <ListGroup.Item>objetoscOpaduPierwszaFala: {numeral(this.state.objetoscOpaduPierwszaFala).format('0.00')}</ListGroup.Item>
+                  <ListGroup.Item>objetoscOpadu130lsha: {numeral(this.state.objetoscOpadu130lsha).format('0.00')}</ListGroup.Item>
+                  <ListGroup.Item>objetoscOpadu300lsha: {numeral(this.state.objetoscOpadu300lsha).format('0.00')}</ListGroup.Item>
+                  <ListGroup.Item>objetoscOgroduDeszczowego: {numeral(this.state.objetoscOgroduDeszczowego).format('0.00')}</ListGroup.Item>
                 </ListGroup>
+
               </Card.Body>
             </Card>
           </Col>
