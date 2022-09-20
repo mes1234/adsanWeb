@@ -9,8 +9,6 @@ import { Configuration } from '../clients/function';
 
 var numeral = require('numeral');
 
-
-//const API = 'http://192.168.0.32:7071/api'
 const API = 'https://developmentfunction-dev.azurewebsites.net/api'
 
 interface IDataInputs {
@@ -86,7 +84,7 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
       case 2:
         return 'Błąd geometrii zbiornika'
       case 3:
-        return 'Błąd przepływów'
+        return 'Wpisz poprawne przepływy'
       default:
         return 'Błąd obliczeń'
     }
@@ -98,16 +96,16 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
       return 'Błąd obliczeń';
 
     if (statusPierwszaFala && statusOpad130lsha && statusOpad300lsha)
-      return "Zbiornik przyjmie wszystko";
+      return "Ogród deszczowy przejmie opad nawalny. Nie przyjmie opadów ponadnormatywnych";
 
     if (statusPierwszaFala && statusOpad130lsha && !statusOpad300lsha)
-      return "Bedzie ciężko ale da radę";
+      return "Ogród deszczowy przejmie \"przeciętny opad\". Wyleje podczas opadu ponadnormatywnego";
 
     if (statusPierwszaFala && !statusOpad130lsha && !statusOpad300lsha)
-      return "Uciekać";
+      return "Ogród deszczowy przyjmie pierwszą falę spływu. Wyleje podczas przeciętnych opadów. Zmień gabaryty lub dodaj inne rozwiązanie retencyjne";
 
     if (!statusPierwszaFala && !statusOpad130lsha && !statusOpad300lsha)
-      return "Zbiornik nie da rady wogóle";
+      return "CO TUTAJ?";
   }
 
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -153,11 +151,11 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
         <Row>
           <Col>
             <Card className='card card-common h-100 border-0'>
-              <Card.Header><h2><strong>Kalkulator Lorem Ipsum</strong></h2></Card.Header>
+              <Card.Header><h2><strong>Kalkulator</strong></h2></Card.Header>
               <Card.Body>
                 <Card.Text>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-                </Card.Text>
+                Poniższy kalkulator służy do wstępnego doboru wielkości suchego ogrodu deszczowego.
+              </Card.Text>
               </Card.Body>
             </Card>
           </Col>
@@ -233,6 +231,17 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
                   <ListGroup.Item>objetoscOgroduDeszczowego: {numeral(this.state.objetoscOgroduDeszczowego).format('0.00')}</ListGroup.Item>
                 </ListGroup>
 
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Card className='card card-common h-100 border-0'>
+              <Card.Body>
+                <Card.Text>
+                Jest to uproszczony kalkulator doboru suchego ogrodu deszczowego. Nie uwzględnia czynników, jak: infiltracja, straty przepływu, odparowywanie itp.<br></br> Wykonane na bazie wytycznych miasta Londyn.               
+                </Card.Text>
               </Card.Body>
             </Card>
           </Col>
