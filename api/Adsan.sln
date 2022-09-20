@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32104.313
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adsan", "Adsan\Adsan.csproj", "{8BCCD06D-1BB3-42C1-A4BA-58002AC10C42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{05795787-3152-411D-987C-70F4F3D0C404}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function.Tests", "Function.Tests\Function.Tests.csproj", "{645D8E8D-57E3-452A-B403-EB0FABF77047}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BCCD06D-1BB3-42C1-A4BA-58002AC10C42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BCCD06D-1BB3-42C1-A4BA-58002AC10C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BCCD06D-1BB3-42C1-A4BA-58002AC10C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BCCD06D-1BB3-42C1-A4BA-58002AC10C42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05795787-3152-411D-987C-70F4F3D0C404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05795787-3152-411D-987C-70F4F3D0C404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05795787-3152-411D-987C-70F4F3D0C404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05795787-3152-411D-987C-70F4F3D0C404}.Release|Any CPU.Build.0 = Release|Any CPU
+		{645D8E8D-57E3-452A-B403-EB0FABF77047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{645D8E8D-57E3-452A-B403-EB0FABF77047}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{645D8E8D-57E3-452A-B403-EB0FABF77047}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{645D8E8D-57E3-452A-B403-EB0FABF77047}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6932FD57-494B-476E-9744-63D0137D3951}
+	EndGlobalSection
+EndGlobal
