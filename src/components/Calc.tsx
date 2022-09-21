@@ -9,7 +9,8 @@ import { Configuration } from '../clients/function';
 
 var numeral = require('numeral');
 
-const API = 'https://developmentfunction-dev.azurewebsites.net/api'
+// const API = 'https://developmentfunction-dev.azurewebsites.net/api'
+const API = 'http://localhost:7071/api'
 
 interface IDataInputs {
   powierzchniaZlewni: number,
@@ -27,7 +28,7 @@ interface IDataInputs {
   statusPierwszaFala: boolean,
   statusOpad130lsha: boolean,
   statusOpad300lsha: boolean,
-  calculationStatus: number
+  calculationStatus: string
 }
 
 
@@ -50,7 +51,7 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
     statusPierwszaFala: true,
     statusOpad130lsha: false,
     statusOpad300lsha: false,
-    calculationStatus: 1
+    calculationStatus: "Init"
   }
 
   private powierzchniaZlewniChange = (e: { currentTarget: { value: string; }; }): void => {
@@ -77,22 +78,27 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
     this.setState({ qSplywuDla300lsha: parseFloat(e.currentTarget.value) });
   };
 
-  private handleCalculationState = (calcState: number): string => {
+  private handleCalculationState = (calcState: string): string => {
     switch (calcState) {
-      case 1:
+      case 'Ok':
         return 'Wyniki poprawne'
-      case 2:
+      case 'GeometriaBledna':
         return 'Błąd geometrii zbiornika'
-      case 3:
+      case 'BlednePrzeplywy':
         return 'Wpisz poprawne przepływy'
+      case 'Init':
+        return 'Wpisz dane'
       default:
-        return 'Błąd obliczeń'
+        return '   '
     }
   };
 
-  private handleCalculationStatus = (calcState: number, statusPierwszaFala: boolean, statusOpad130lsha: boolean, statusOpad300lsha: boolean): string => {
+  private handleCalculationStatus = (calcState: string, statusPierwszaFala: boolean, statusOpad130lsha: boolean, statusOpad300lsha: boolean): string => {
 
-    if (calcState != 1)
+    if (calcState == 'Init')
+      return 'Wciśnij \'Oblicz\'';
+
+    if (calcState != 'Ok')
       return 'Błąd obliczeń';
 
     if (statusPierwszaFala && statusOpad130lsha && statusOpad300lsha)
@@ -137,7 +143,7 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
           statusPierwszaFala: result.statusPierwszaFala,
           statusOpad130lsha: result.statusOpad130lsha,
           statusOpad300lsha: result.statusOpad300lsha,
-          calculationStatus: result.calculationStatus
+          calculationStatus: result.calculationStatus.toString()
 
         })
       })
