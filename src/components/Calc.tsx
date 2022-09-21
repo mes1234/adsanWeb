@@ -28,7 +28,7 @@ interface IDataInputs {
   statusPierwszaFala: boolean,
   statusOpad130lsha: boolean,
   statusOpad300lsha: boolean,
-  calculationStatus: string
+  calculationStatus: number
 }
 
 
@@ -51,7 +51,7 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
     statusPierwszaFala: true,
     statusOpad130lsha: false,
     statusOpad300lsha: false,
-    calculationStatus: "Init"
+    calculationStatus: 4
   }
 
   private powierzchniaZlewniChange = (e: { currentTarget: { value: string; }; }): void => {
@@ -78,27 +78,27 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
     this.setState({ qSplywuDla300lsha: parseFloat(e.currentTarget.value) });
   };
 
-  private handleCalculationState = (calcState: string): string => {
+  private handleCalculationState = (calcState: number): string => {
     switch (calcState) {
-      case 'Ok':
+      case 1:
         return 'Wyniki poprawne'
-      case 'GeometriaBledna':
+      case 2:
         return 'Błąd geometrii zbiornika'
-      case 'BlednePrzeplywy':
+      case 3:
         return 'Wpisz poprawne przepływy'
-      case 'Init':
+      case 4:
         return 'Wpisz dane'
       default:
         return '   '
     }
   };
 
-  private handleCalculationStatus = (calcState: string, statusPierwszaFala: boolean, statusOpad130lsha: boolean, statusOpad300lsha: boolean): string => {
+  private handleCalculationStatus = (calcState: number, statusPierwszaFala: boolean, statusOpad130lsha: boolean, statusOpad300lsha: boolean): string => {
 
-    if (calcState == 'Init')
+    if (calcState == 4)
       return 'Wciśnij \'Oblicz\'';
 
-    if (calcState != 'Ok')
+    if (calcState != 1)
       return 'Błąd obliczeń';
 
     if (statusPierwszaFala && statusOpad130lsha && statusOpad300lsha)
@@ -143,7 +143,7 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
           statusPierwszaFala: result.statusPierwszaFala,
           statusOpad130lsha: result.statusOpad130lsha,
           statusOpad300lsha: result.statusOpad300lsha,
-          calculationStatus: result.calculationStatus.toString()
+          calculationStatus: result.calculationStatus
 
         })
       })
