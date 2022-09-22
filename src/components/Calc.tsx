@@ -9,7 +9,7 @@ import { Configuration } from '../clients/function';
 
 var numeral = require('numeral');
 
-const API = 'https://developmentfunction-dev.azurewebsites.net/api'
+const API = 'https://developmentfunction.azurewebsites.net/api'
 // const API = 'http://localhost:7071/api'
 
 interface IDataInputs {
