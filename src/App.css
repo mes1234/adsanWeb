@@ -21,7 +21,7 @@
     min-width: 100%;
     min-height: 100%;
 
-    margin-left: -512px;
+    margin-left: -312px;
   }
 }
 
@@ -61,7 +61,7 @@
 }
 
 .card-image-common {
-  opacity: 1 !important; 
+  opacity: 0.99 !important; 
   width: 200px;
   height: auto;
 }
