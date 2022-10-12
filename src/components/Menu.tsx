@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class Menu extends React.Component {
     render() {
         return (
-            <Container className='menu '>
+            <Container className='menu card-common'>
                 <Navbar variant="light" className='navbar py-0' >
                     <Navbar.Brand href="/"  ><h1 className="logo py-0 ">Anna<br></br> Dąbrowicz</h1></Navbar.Brand>
                     <Nav >

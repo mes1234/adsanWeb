@@ -10,12 +10,13 @@ import {
   Route
 } from "react-router-dom";
 import Menu from './components/Menu';
-import { Row } from 'react-bootstrap';
+import { Image, Row } from 'react-bootstrap';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
 function App() {
   return (
     <Container fluid>
+      <img src="rain.jpg" className='bg' ></img>
       <Router>
         <Row >
           <Menu></Menu>

@@ -10,7 +10,6 @@ import { Configuration } from '../clients/function';
 var numeral = require('numeral');
 
 const API = 'https://developmentfunction.azurewebsites.net/api'
-// const API = 'http://localhost:7071/api'
 
 interface IDataInputs {
   powierzchniaZlewni: number,
@@ -52,6 +51,25 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
     statusOpad130lsha: false,
     statusOpad300lsha: false,
     calculationStatus: "Init"
+  }
+
+  componentDidMount() {
+    const config: Configuration = {
+      basePath: API
+    };
+
+    const api: NameApi = new NameApi(config);
+    const data: InboundDto = {
+      powierzchniaZlewni: this.state.powierzchniaZlewni,
+      glebokoscWolna: this.state.glebokoscWolna,
+      glebokoscOgroduDeszczowego: this.state.glebokoscOgroduDeszczowego,
+      qSplywuDla15lsha: this.state.qSplywuDla15lsha,
+      qSplywuDla130lsha: this.state.qSplywuDla130lsha,
+      qSplywuDla300lsha: this.state.qSplywuDla300lsha
+
+    }
+
+    api.run(data);
   }
 
   private powierzchniaZlewniChange = (e: { currentTarget: { value: string; }; }): void => {
@@ -173,46 +191,28 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
               <Card.Body>
                 <Form onSubmit={(e) => this.handleSubmit(e)}>
                   <Form.Group controlId="powierzchniaZlewni">
-                    <Form.Label>powierzchniaZlewni</Form.Label>
+                    <Form.Label>Powierzchnia zlewni [m²]</Form.Label>
                     <Form.Control type="number" value={this.state.powierzchniaZlewni} onChange={this.powierzchniaZlewniChange} />
-                    <Form.Text >
-                      powierzchniaZlewni
-                    </Form.Text>
                   </Form.Group>
                   <Form.Group controlId="glebokoscWolna">
-                    <Form.Label>glebokoscWolna</Form.Label>
+                    <Form.Label>Głębokość wolna [m]</Form.Label>
                     <Form.Control type="number" value={this.state.glebokoscWolna} onChange={this.glebokoscWolnaChange} />
-                    <Form.Text >
-                      glebokoscWolna
-                    </Form.Text>
                   </Form.Group>
-                  <Form.Group controlId="glebokoscOgroduDeszczowego">
-                    <Form.Label>glebokoscOgroduDeszczowego</Form.Label>
+                  <Form.Group controlId="glebokoscOgroduDeszczowego ">
+                    <Form.Label>Głębokość ogrodu deszczowego [m]</Form.Label>
                     <Form.Control type="number" value={this.state.glebokoscOgroduDeszczowego} onChange={this.glebokoscOgroduDeszczowegoChange} />
-                    <Form.Text >
-                      glebokoscOgroduDeszczowego
-                    </Form.Text>
                   </Form.Group>
                   <Form.Group controlId="qSplywuDla15lsha">
-                    <Form.Label>qSplywuDla15lsha</Form.Label>
+                    <Form.Label>Wielkość spływu Q dla I=15 [dm³/s·ha]</Form.Label>
                     <Form.Control type="number" value={this.state.qSplywuDla15lsha} onChange={this.qSplywuDla15lshaChange} />
-                    <Form.Text >
-                      qSplywuDla15lsha
-                    </Form.Text>
                   </Form.Group>
                   <Form.Group controlId="qSplywuDla130lsha">
-                    <Form.Label>qSplywuDla130lsha</Form.Label>
+                    <Form.Label>Wielkość spływu Q dla I=130 [dm³/s·ha]</Form.Label>
                     <Form.Control type="number" value={this.state.qSplywuDla130lsha} onChange={this.qSplywuDla130lshaChange} />
-                    <Form.Text >
-                      qSplywuDla130lsha
-                    </Form.Text>
                   </Form.Group>
-                  <Form.Group controlId="qSplywuDla300lsha">
-                    <Form.Label>qSplywuDla300lsha</Form.Label>
+                  <Form.Group controlId="qSplywuDla300lsha ">
+                    <Form.Label>Wielkość spływu Q dla I=300 [dm³/s·ha]</Form.Label>
                     <Form.Control type="number" value={this.state.qSplywuDla300lsha} onChange={this.qSplywuDla300lshaChange} />
-                    <Form.Text >
-                      qSplywuDla300lsha
-                    </Form.Text>
                   </Form.Group>
 
                   <Button variant="primary" type="submit"  >
@@ -226,8 +226,8 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
             <Card className='card card-common h-100 border-0'>
               <Card.Header><h2><strong>Wyniki</strong></h2></Card.Header>
               <Card.Body>
-                <p><strong>{this.handleCalculationState(this.state.calculationStatus)}</strong></p>
-                <p><strong>{this.handleCalculationStatus(this.state.calculationStatus, this.state.statusPierwszaFala, this.state.statusOpad130lsha, this.state.statusOpad300lsha)}</strong></p>
+                <p>{this.handleCalculationState(this.state.calculationStatus)}</p>
+                <p>{this.handleCalculationStatus(this.state.calculationStatus, this.state.statusPierwszaFala, this.state.statusOpad130lsha, this.state.statusOpad300lsha)}</p>
 
                 <ListGroup>
                   <ListGroup.Item>minPowierzchnia: {numeral(this.state.minPowierzchnia).format('0.00')}</ListGroup.Item>
