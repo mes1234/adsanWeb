@@ -230,11 +230,11 @@ class Calc extends React.Component<IWelcome, IDataInputs> {
                 <p>{this.handleCalculationStatus(this.state.calculationStatus, this.state.statusPierwszaFala, this.state.statusOpad130lsha, this.state.statusOpad300lsha)}</p>
 
                 <ListGroup>
-                  <ListGroup.Item>minPowierzchnia: {numeral(this.state.minPowierzchnia).format('0.00')}</ListGroup.Item>
-                  <ListGroup.Item>objetoscOpaduPierwszaFala: {numeral(this.state.objetoscOpaduPierwszaFala).format('0.00')}</ListGroup.Item>
-                  <ListGroup.Item>objetoscOpadu130lsha: {numeral(this.state.objetoscOpadu130lsha).format('0.00')}</ListGroup.Item>
-                  <ListGroup.Item>objetoscOpadu300lsha: {numeral(this.state.objetoscOpadu300lsha).format('0.00')}</ListGroup.Item>
-                  <ListGroup.Item>objetoscOgroduDeszczowego: {numeral(this.state.objetoscOgroduDeszczowego).format('0.00')}</ListGroup.Item>
+                  <ListGroup.Item>Minimalna Powierzchnia: {numeral(this.state.minPowierzchnia).format('0.00')}</ListGroup.Item>
+                  <ListGroup.Item>Objętość opadu dla pierwszej fali: {numeral(this.state.objetoscOpaduPierwszaFala).format('0.00')}</ListGroup.Item>
+                  <ListGroup.Item>Objętość opadu dla I=130 [dm³/s·ha]: {numeral(this.state.objetoscOpadu130lsha).format('0.00')}</ListGroup.Item>
+                  <ListGroup.Item>Objętość opadu dla I=300 [dm³/s·ha]: {numeral(this.state.objetoscOpadu300lsha).format('0.00')}</ListGroup.Item>
+                  <ListGroup.Item>Objętość ogrodu deszczowego: {numeral(this.state.objetoscOgroduDeszczowego).format('0.00')}</ListGroup.Item>
                 </ListGroup>
 
               </Card.Body>
