@@ -7,17 +7,16 @@ import Container from 'react-bootstrap/esm/Container';
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Menu from './components/Menu';
-import { Row } from 'react-bootstrap';
+import { Image, Row } from 'react-bootstrap';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
-import Wip from './components/Wip';
 function App() {
   return (
     <Container fluid>
+      <img src="rain.jpg" className='bg' ></img>
       <Router>
         <Row >
           <Menu></Menu>
@@ -25,18 +24,12 @@ function App() {
         <Row>
           <Container>
             <Routes>
-              <Route path="/" element={<Wip name="Authme"></Wip>}>
+              <Route path="/" element={<Welcome name="Authme"></Welcome>}>
               </Route>
-              <Route path="/calcs" element={<Wip name="Authme"></Wip>}>
+              <Route path="/calcs" element={<Calc name="Authme"></Calc>}>
               </Route>
-              <Route path="/contact" element={<Wip name="Authme"></Wip>}>
+              <Route path="/contact" element={<Contact name="Authme"></Contact>}>
               </Route>
-              {/* <Route path="/" element={<Welcome name="Authme"></Welcome>}>
-                </Route>
-                <Route path="/calcs" element={<Calc name="Authme"></Calc>}>
-                </Route>
-                <Route path="/contact" element={<Contact name="Authme"></Contact>}>
-                </Route> */}
             </Routes>
           </Container>
         </Row>

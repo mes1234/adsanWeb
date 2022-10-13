@@ -3,7 +3,7 @@ import '../App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Button, Card, CardImg, ListGroup } from 'react-bootstrap';
+import { Card, ListGroup } from 'react-bootstrap';
 import Cookies from 'universal-cookie';
 import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
@@ -33,10 +33,10 @@ class Contact extends React.Component<IWelcome> {
                 <Card.Header><h2><strong>Kontakt</strong></h2></Card.Header>
                 <Card.Body>
                   <Card.Text>
-                  <ListGroup >
-                    <ListGroup.Item><FontAwesomeIcon icon={faMailBulk} />    biuro.adsan@gmail.com</ListGroup.Item>
-                    <ListGroup.Item><FontAwesomeIcon icon={faPhone} />   660 094 560</ListGroup.Item>
-                  </ListGroup>
+                    <ListGroup >
+                      <ListGroup.Item><FontAwesomeIcon icon={faMailBulk} />    biuro.adsan@gmail.com</ListGroup.Item>
+                      <ListGroup.Item><FontAwesomeIcon icon={faPhone} />   660 094 560</ListGroup.Item>
+                    </ListGroup>
                   </Card.Text>
                 </Card.Body>
               </Card>

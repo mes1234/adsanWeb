@@ -1,0 +1,126 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Azure Functions OpenAPI Extension",
+      "version": "1.0.0"
+    },
+    "host": "localhost:7071",
+    "basePath": "/api",
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/Function1": {
+        "post": {
+          "tags": [
+            "name"
+          ],
+          "operationId": "Run",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "text/plain"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "schema": {
+                "$ref": "#/definitions/inboundDto"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The OK response",
+              "schema": {
+                "$ref": "#/definitions/outboundDto"
+              }
+            },
+            "400": {
+              "description": "Bad response",
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "inboundDto": {
+        "type": "object",
+        "properties": {
+          "powierzchniaZlewni": {
+            "format": "double",
+            "type": "number"
+          },
+          "glebokoscWolna": {
+            "format": "double",
+            "type": "number"
+          },
+          "glebokoscOgroduDeszczowego": {
+            "format": "double",
+            "type": "number"
+          },
+          "qSplywuDla15lsha": {
+            "format": "double",
+            "type": "number"
+          },
+          "qSplywuDla130lsha": {
+            "format": "double",
+            "type": "number"
+          },
+          "qSplywuDla300lsha": {
+            "format": "double",
+            "type": "number"
+          }
+        }
+      },
+      "outboundDto": {
+        "type": "object",
+        "properties": {
+          "minPowierzchnia": {
+            "format": "double",
+            "type": "number"
+          },
+          "objetoscOpaduPierwszaFala": {
+            "format": "double",
+            "type": "number"
+          },
+          "objetoscOpadu130lsha": {
+            "format": "double",
+            "type": "number"
+          },
+          "objetoscOpadu300lsha": {
+            "format": "double",
+            "type": "number"
+          },
+          "objetoscOgroduDeszczowego": {
+            "format": "double",
+            "type": "number"
+          },
+          "statusPierwszaFala": {
+            "type": "boolean"
+          },
+          "statusOpad130lsha": {
+            "type": "boolean"
+          },
+          "statusOpad300lsha": {
+            "type": "boolean"
+          },
+          "calculationStatus": {
+            "format": "int32",
+            "default": 1,
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }

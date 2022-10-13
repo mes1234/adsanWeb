@@ -1,8 +1,28 @@
-body {
-  background-image: url("rain.jpg");
-  background-color: white;
-  background-size: 100%;
-  background-repeat: no-repeat;
+
+.bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+	
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+
+  height: auto;
+}
+
+@media only screen and (max-width: 600px)
+{
+  .bg {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    
+    min-width: 100%;
+    min-height: 100%;
+
+    margin-left: -312px;
+  }
 }
 
 .footer {
@@ -35,13 +55,13 @@ body {
 }
 
 .card-common {
-   opacity: 0.95; 
+  opacity: 0.85; 
   text-align: justify;
   margin-top: 1rem;
 }
 
 .card-image-common {
-  opacity: 1 !important; 
+  opacity: 0.99 !important; 
   width: 200px;
   height: auto;
 }
@@ -51,4 +71,5 @@ body {
   font-size:  large;
   border-radius: 0 !important;
   padding: 1 !important;
+  background-color: transparent;
 }
