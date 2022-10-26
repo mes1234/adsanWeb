@@ -1,0 +1,16 @@
+.bg {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+      
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+  
+    height: auto;
+  }
+
+  .mat-tab-group {
+    margin-bottom: 48px;
+    background-color: white;
+  }
