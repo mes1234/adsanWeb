@@ -8,9 +8,9 @@
     min-height: 100%;
   
     height: auto;
+    z-index: -100;
   }
 
-  .mat-tab-group {
-    margin-bottom: 48px;
-    background-color: white;
+  .content {
+    margin-top: 1px;
   }
