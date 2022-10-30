@@ -1,1 +1,19 @@
-<mat-card>calculator works!</mat-card>
+<mat-card>
+    <mat-card-header>Opis</mat-card-header>
+</mat-card>
+<mat-card>
+    <mat-card-header>Dane</mat-card-header>
+    <mat-card-content>
+        <label>
+            Powierzchnia:
+            <input type="number" [formControl]="powierzchniaControlInbound">
+        </label>
+    </mat-card-content>
+</mat-card>
+<mat-card>
+    <mat-card-content>
+        <label>
+            Powierzchnia: {{powierzchniaControlOutbound}} [m/s2]
+        </label>
+    </mat-card-content>
+</mat-card>
