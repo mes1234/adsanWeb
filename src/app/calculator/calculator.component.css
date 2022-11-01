@@ -1,4 +1,14 @@
 * {
-    margin-bottom: 48px;
-    background-color: white;
-  }
+  margin-bottom: 48px;
+  background-color: white;
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+}
+
+.layout {
+  display: flex;
+  flex-direction: row;
+}

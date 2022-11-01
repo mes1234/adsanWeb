@@ -1,19 +1,65 @@
 <mat-card>
     <mat-card-header>Opis</mat-card-header>
 </mat-card>
-<mat-card>
-    <mat-card-header>Dane</mat-card-header>
-    <mat-card-content>
-        <label>
-            Powierzchnia:
-            <input type="number" [formControl]="powierzchniaControlInbound">
-        </label>
-    </mat-card-content>
-</mat-card>
-<mat-card>
-    <mat-card-content>
-        <label>
-            Powierzchnia: {{powierzchniaControlOutbound}} [m/s2]
-        </label>
-    </mat-card-content>
-</mat-card>
+<div ngClass="layout">
+    <mat-card>
+        <mat-card-header>Dane</mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="inputForm" ngClass="calculator">
+                <label *ngIf="inputForm.invalid" [ngClass]="'error'"> Błąd danych
+                </label>
+                <label for="powierzchniaZlewni">powierzchniaZlewni: </label>
+
+                <input id="powierzchniaZlewni" type="number" formControlName="powierzchniaZlewni">
+
+                <label for="glebokoscWolna">glebokoscWolna: </label>
+                <input id="glebokoscWolna" type="number" formControlName="glebokoscWolna">
+
+                <label for="glebokoscOgroduDeszczowego">glebokoscOgroduDeszczowego: </label>
+                <input id="glebokoscOgroduDeszczowego" type="number" formControlName="glebokoscOgroduDeszczowego">
+
+                <label for="qSplywuDla15lsha">qSplywuDla15lsha: </label>
+                <input id="qSplywuDla15lsha" type="number" formControlName="qSplywuDla15lsha">
+
+                <label for="qSplywuDla130lsha">qSplywuDla130lsha: </label>
+                <input id="qSplywuDla130lsha" type="number" formControlName="qSplywuDla130lsha">
+
+                <label for="qSplywuDla300lsha">qSplywuDla300lsha: </label>
+                <input id="qSplywuDla300lsha" type="number" formControlName="qSplywuDla300lsha">
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-content ngClass="calculator">
+            <label>
+                Powierzchnia: {{results?.minPowierzchnia}} [m/s2]
+            </label>
+            <label>
+                objetoscOpaduPierwszaFala: {{results?.objetoscOpaduPierwszaFala}} [m/s2]
+            </label>
+            <label>
+                objetoscOpadu130lsha: {{results?.objetoscOpadu130lsha}} [m/s2]
+            </label>
+            <label>
+                objetoscOpadu300lsha: {{results?.objetoscOpadu300lsha}} [m/s2]
+            </label>
+            <label>
+                objetoscOgroduDeszczowego: {{results?.objetoscOgroduDeszczowego}} [m/s2]
+            </label>
+            <label>
+                statusPierwszaFala: {{results?.statusPierwszaFala}} [m/s2]
+            </label>
+            <label>
+                statusOpad130lsha: {{results?.statusOpad130lsha}} [m/s2]
+            </label>
+            <label>
+                statusOpad300lsha: {{results?.statusOpad300lsha}} [m/s2]
+            </label>
+            <label>
+                calculationStatus: {{results?.calculationStatus}} [m/s2]
+            </label>
+        </mat-card-content>
+    </mat-card>
+</div>

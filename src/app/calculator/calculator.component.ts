@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { IDataInputs, IDataOutputs } from "./calculator.comon";
+import { DataproviderService } from './data/dataprovider.service';
 
 
 @Component({
@@ -9,16 +11,40 @@ import { FormControl } from '@angular/forms';
 })
 export class CalculatorComponent implements OnInit {
 
-  powierzchniaControlInbound = new FormControl<number>(1000.)
+
+  inputs: IDataInputs | undefined;
+  results: IDataOutputs | undefined;
+
+
+  inputForm = new FormGroup({
+    powierzchniaZlewni: new FormControl<number>(80.0, [Validators.required, Validators.min(0.0)]),
+    glebokoscWolna: new FormControl<number>(80.0, [Validators.required, Validators.min(0.0)]),
+    glebokoscOgroduDeszczowego: new FormControl<number>(80.0, [Validators.required, Validators.min(0.0)]),
+    qSplywuDla15lsha: new FormControl<number>(80.0, [Validators.required, Validators.min(0.0)]),
+    qSplywuDla130lsha: new FormControl<number>(80.0, [Validators.required, Validators.min(0.0)]),
+    qSplywuDla300lsha: new FormControl<number>(80.0, [Validators.required, Validators.min(0.0)])
+  });
+
   powierzchniaControlOutbound: string | undefined;
 
-  constructor() { }
+  constructor(private dataProvider: DataproviderService) { }
 
   ngOnInit(): void {
 
-    this.powierzchniaControlInbound.valueChanges.subscribe(value => {
-      this.powierzchniaControlOutbound = value?.toString();
+    this.inputForm.valueChanges.subscribe(value => {
+      const data = {
+        powierzchniaZlewni: value.powierzchniaZlewni ?? 0.0,
+        glebokoscWolna: value.glebokoscWolna ?? 0.0,
+        glebokoscOgroduDeszczowego: value.glebokoscOgroduDeszczowego ?? 0.0,
+        qSplywuDla15lsha: value.qSplywuDla15lsha ?? 0.0,
+        qSplywuDla130lsha: value.qSplywuDla15lsha ?? 0.0,
+        qSplywuDla300lsha: value.qSplywuDla300lsha ?? 0.0,
+      };
+
+      this.dataProvider.GetData(data).subscribe(value => this.results = value);
     });
   }
+
+
 
 }
