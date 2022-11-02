@@ -14,6 +14,10 @@ import { CalculatorComponent } from './calculator/calculator.component';
 import { ContactComponent } from './contact/contact.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ApiModule } from "./calculator/api/api.module";
+import { environment } from 'src/environments/environment';
+import { BASE_PATH } from './calculator/api/variables';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: 'info', component: WelcomeComponent },
@@ -37,9 +41,11 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatTabsModule,
     MatCardModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ApiModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: BASE_PATH, useValue: environment.API_BASE_PATH }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

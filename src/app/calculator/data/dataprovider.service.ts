@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
+import { NameService } from '../api/api/name.service';
+import { OutboundDto } from '../api/model/outboundDto';
 import { IDataInputs, IDataOutputs } from '../calculator.comon';
 
 @Injectable({
@@ -7,21 +9,19 @@ import { IDataInputs, IDataOutputs } from '../calculator.comon';
 })
 export class DataproviderService {
 
-  API = 'https://developmentfunction.azurewebsites.net/api'
+  constructor(private dataAccess: NameService) { };
 
-  constructor() { }
+  GetData(data: IDataInputs): Observable<OutboundDto> {
+    const inputs = {
+      powierzchniaZlewni: data.powierzchniaZlewni,
+      glebokoscWolna: data.glebokoscWolna,
+      glebokoscOgroduDeszczowego: data.glebokoscOgroduDeszczowego,
+      qSplywuDla15lsha: data.qSplywuDla15lsha,
+      qSplywuDla130lsha: data.qSplywuDla15lsha,
+      qSplywuDla300lsha: data.qSplywuDla300lsha,
+    };
 
-  GetData(data: IDataInputs): Observable<IDataOutputs> {
-    return of({
-      minPowierzchnia: data.glebokoscOgroduDeszczowego,
-      objetoscOpaduPierwszaFala: data.glebokoscWolna,
-      objetoscOpadu130lsha: data.powierzchniaZlewni,
-      objetoscOpadu300lsha: 1,
-      objetoscOgroduDeszczowego: 11,
-      statusPierwszaFala: true,
-      statusOpad130lsha: true,
-      statusOpad300lsha: true,
-      calculationStatus: "ok"
-    });
+    return this.dataAccess.run(inputs);
+
   }
 }

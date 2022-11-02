@@ -13,7 +13,7 @@ export class CalculatorComponent implements OnInit {
 
 
   inputs: IDataInputs | undefined;
-  results: IDataOutputs | undefined;
+  results: IDataOutputs = {};
 
 
   inputForm = new FormGroup({
@@ -41,7 +41,9 @@ export class CalculatorComponent implements OnInit {
         qSplywuDla300lsha: value.qSplywuDla300lsha ?? 0.0,
       };
 
-      this.dataProvider.GetData(data).subscribe(value => this.results = value);
+      this.dataProvider.GetData(data).subscribe(
+        value =>
+          this.results.minPowierzchnia = value.minPowierzchnia);
     });
   }
 

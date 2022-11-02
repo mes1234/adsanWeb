@@ -8,13 +8,13 @@ export interface IDataInputs {
 }
 
 export interface IDataOutputs {
-    minPowierzchnia: number,
-    objetoscOpaduPierwszaFala: number,
-    objetoscOpadu130lsha: number,
-    objetoscOpadu300lsha: number,
-    objetoscOgroduDeszczowego: number,
-    statusPierwszaFala: boolean,
-    statusOpad130lsha: boolean,
-    statusOpad300lsha: boolean,
-    calculationStatus: string
+    minPowierzchnia?: number,
+    objetoscOpaduPierwszaFala?: number,
+    objetoscOpadu130lsha?: number,
+    objetoscOpadu300lsha?: number,
+    objetoscOgroduDeszczowego?: number,
+    statusPierwszaFala?: boolean,
+    statusOpad130lsha?: boolean,
+    statusOpad300lsha?: boolean,
+    calculationStatus?: string
 }
