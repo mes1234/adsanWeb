@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { __values } from 'tslib';
 import { IDataInputs, IDataOutputs } from "./calculator.comon";
 import { DataproviderService } from './data/dataprovider.service';
 
@@ -9,7 +10,7 @@ import { DataproviderService } from './data/dataprovider.service';
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.css']
 })
-export class CalculatorComponent implements OnInit {
+export class CalculatorComponent {
 
 
   inputs: IDataInputs | undefined;
@@ -23,40 +24,20 @@ export class CalculatorComponent implements OnInit {
     qSplywuDla15lsha: new FormControl<number>(80.0, [Validators.required, Validators.min(0.0)]),
     qSplywuDla130lsha: new FormControl<number>(80.0, [Validators.required, Validators.min(0.0)]),
     qSplywuDla300lsha: new FormControl<number>(80.0, [Validators.required, Validators.min(0.0)])
-  });
+  }, { updateOn: 'submit' });
 
   powierzchniaControlOutbound: string | undefined;
 
   constructor(private dataProvider: DataproviderService) { }
 
-  ngOnInit(): void {
+  sendToCalculatorFunction() {
+    const dataCasted = <IDataInputs>this.inputForm.value;
 
-    this.inputForm.valueChanges.subscribe(value => {
-      const data = {
-        powierzchniaZlewni: value.powierzchniaZlewni ?? 0.0,
-        glebokoscWolna: value.glebokoscWolna ?? 0.0,
-        glebokoscOgroduDeszczowego: value.glebokoscOgroduDeszczowego ?? 0.0,
-        qSplywuDla15lsha: value.qSplywuDla15lsha ?? 0.0,
-        qSplywuDla130lsha: value.qSplywuDla15lsha ?? 0.0,
-        qSplywuDla300lsha: value.qSplywuDla300lsha ?? 0.0,
-      };
+    const foundNull = Object.values(dataCasted).some(x => x === null);
+    if (foundNull) return;
 
-      this.dataProvider.GetData(data).subscribe(
-        value => {
-          this.results.minPowierzchnia = value.minPowierzchnia;
-          this.results.objetoscOgroduDeszczowego = value.objetoscOgroduDeszczowego;
-          this.results.objetoscOpadu130lsha = value.objetoscOpadu130lsha;
-          this.results.objetoscOpadu300lsha = value.objetoscOpadu300lsha;
-          this.results.statusPierwszaFala = value.statusPierwszaFala;
-          this.results.statusOpad130lsha = value.statusOpad130lsha;
-          this.results.statusOpad300lsha = value.statusOpad300lsha;
-          this.results.calculationStatus = value.calculationStatus?.toString();
-
-        }
-      );
-    });
+    this.dataProvider.GetData(dataCasted).subscribe(
+      value => { this.results = value; }
+    );
   }
-
-
-
 }
