@@ -42,8 +42,18 @@ export class CalculatorComponent implements OnInit {
       };
 
       this.dataProvider.GetData(data).subscribe(
-        value =>
-          this.results.minPowierzchnia = value.minPowierzchnia);
+        value => {
+          this.results.minPowierzchnia = value.minPowierzchnia;
+          this.results.objetoscOgroduDeszczowego = value.objetoscOgroduDeszczowego;
+          this.results.objetoscOpadu130lsha = value.objetoscOpadu130lsha;
+          this.results.objetoscOpadu300lsha = value.objetoscOpadu300lsha;
+          this.results.statusPierwszaFala = value.statusPierwszaFala;
+          this.results.statusOpad130lsha = value.statusOpad130lsha;
+          this.results.statusOpad300lsha = value.statusOpad300lsha;
+          this.results.calculationStatus = value.calculationStatus?.toString();
+
+        }
+      );
     });
   }
 
