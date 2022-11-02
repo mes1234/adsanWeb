@@ -1,30 +1,31 @@
 <mat-card>
-    <mat-card-header>Opis</mat-card-header>
+    <mat-card-header>Poniższy kalkulator służy do wstępnego doboru wielkości suchego ogrodu deszczowego.
+    </mat-card-header>
 </mat-card>
 <div ngClass="layout">
     <mat-card>
-        <mat-card-header>Dane</mat-card-header>
+        <mat-card-header>Parametry</mat-card-header>
         <mat-card-content>
             <form [formGroup]="inputForm" ngClass="calculator" (ngSubmit)="sendToCalculatorFunction()">
                 <label *ngIf="inputForm.invalid" [ngClass]="'error'"> Błąd danych
                 </label>
-                <label for="powierzchniaZlewni">powierzchniaZlewni: </label>
+                <label for="powierzchniaZlewni">Powierzchnia zlewni [m²]</label>
 
                 <input id="powierzchniaZlewni" type="number" formControlName="powierzchniaZlewni">
 
-                <label for="glebokoscWolna">glebokoscWolna: </label>
+                <label for="glebokoscWolna">Głębokość wolna [m]</label>
                 <input id="glebokoscWolna" type="number" formControlName="glebokoscWolna">
 
-                <label for="glebokoscOgroduDeszczowego">glebokoscOgroduDeszczowego: </label>
+                <label for="glebokoscOgroduDeszczowego">Głębokość ogrodu deszczowego [m]</label>
                 <input id="glebokoscOgroduDeszczowego" type="number" formControlName="glebokoscOgroduDeszczowego">
 
-                <label for="qSplywuDla15lsha">qSplywuDla15lsha: </label>
+                <label for="qSplywuDla15lsha">Wielkość spływu Q dla I=15 [dm³/s·ha]</label>
                 <input id="qSplywuDla15lsha" type="number" formControlName="qSplywuDla15lsha">
 
-                <label for="qSplywuDla130lsha">qSplywuDla130lsha: </label>
+                <label for="qSplywuDla130lsha">Wielkość spływu Q dla I=130 [dm³/s·ha]</label>
                 <input id="qSplywuDla130lsha" type="number" formControlName="qSplywuDla130lsha">
 
-                <label for="qSplywuDla300lsha">qSplywuDla300lsha: </label>
+                <label for="qSplywuDla300lsha">Wielkość spływu Q dla I=300 [dm³/s·ha]</label>
                 <input id="qSplywuDla300lsha" type="number" formControlName="qSplywuDla300lsha">
 
                 <button type="submit">Oblicz</button>
@@ -33,33 +34,25 @@
     </mat-card>
 
     <mat-card>
+        <mat-card-header>Wyniki</mat-card-header>
         <mat-card-content ngClass="calculator">
+            <p>{{calculationState}}</p>
+            <p>{{calculationStatus}}</p>
+
             <label>
-                Powierzchnia: {{results.minPowierzchnia}} [m/s2]
+                Minimalna Powierzchnia: {{results.minPowierzchnia}} [m/s2]
             </label>
             <label>
-                objetoscOpaduPierwszaFala: {{results.objetoscOpaduPierwszaFala}} [m/s2]
+                Objętość opadu dla pierwszej fali: {{results.objetoscOpaduPierwszaFala}} [m/s2]
             </label>
             <label>
-                objetoscOpadu130lsha: {{results.objetoscOpadu130lsha}} [m/s2]
+                Objętość opadu dla I=130 [dm³/s·ha]: {{results.objetoscOpadu130lsha}} [m/s2]
             </label>
             <label>
-                objetoscOpadu300lsha: {{results.objetoscOpadu300lsha}} [m/s2]
+                Objętość opadu dla I=300 [dm³/s·ha]: {{results.objetoscOpadu300lsha}} [m/s2]
             </label>
             <label>
-                objetoscOgroduDeszczowego: {{results.objetoscOgroduDeszczowego}} [m/s2]
-            </label>
-            <label>
-                statusPierwszaFala: {{results.statusPierwszaFala}} [m/s2]
-            </label>
-            <label>
-                statusOpad130lsha: {{results.statusOpad130lsha}} [m/s2]
-            </label>
-            <label>
-                statusOpad300lsha: {{results.statusOpad300lsha}} [m/s2]
-            </label>
-            <label>
-                calculationStatus: {{results.calculationStatus}} [m/s2]
+                Objętość ogrodu deszczowego: {{results.objetoscOgroduDeszczowego}} [m/s2]
             </label>
         </mat-card-content>
     </mat-card>

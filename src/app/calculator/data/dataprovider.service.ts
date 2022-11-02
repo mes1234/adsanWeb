@@ -25,7 +25,7 @@ export class DataproviderService {
       glebokoscWolna: data.glebokoscWolna,
       glebokoscOgroduDeszczowego: data.glebokoscOgroduDeszczowego,
       qSplywuDla15lsha: data.qSplywuDla15lsha,
-      qSplywuDla130lsha: data.qSplywuDla15lsha,
+      qSplywuDla130lsha: data.qSplywuDla130lsha,
       qSplywuDla300lsha: data.qSplywuDla300lsha,
     }
   }
@@ -34,6 +34,7 @@ export class DataproviderService {
     return {
       minPowierzchnia: value.minPowierzchnia,
       objetoscOgroduDeszczowego: value.objetoscOgroduDeszczowego,
+      objetoscOpaduPierwszaFala: value.objetoscOpaduPierwszaFala,
       objetoscOpadu130lsha: value.objetoscOpadu130lsha,
       objetoscOpadu300lsha: value.objetoscOpadu300lsha,
       statusPierwszaFala: value.statusPierwszaFala,
