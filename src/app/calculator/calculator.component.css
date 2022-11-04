@@ -1,14 +1,26 @@
 * {
-  margin-bottom: 48px;
-  background-color: white;
+  gap: 0.5rem;
+  justify-content: left;
+  border-radius: 0;
+  text-align: left;
 }
 
-.calculator {
+.calc-layout {
   display: flex;
   flex-direction: column;
 }
 
-.layout {
+.calc-forms-layout {
   display: flex;
   flex-direction: row;
+}
+
+.form-card {
+  width: 50%;
+  text-align: center;
+}
+
+.calc-input-layout {
+  display: flex;
+  flex-direction: column;
 }

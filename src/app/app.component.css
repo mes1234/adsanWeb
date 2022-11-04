@@ -1,25 +1,23 @@
 .bg {
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-      
-    /* Preserve aspet ratio */
-    min-width: 100%;
-    min-height: 100%;
-  
-    height: auto;
-    z-index: -100;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
 
-  * {
-    opacity: 0.90;
-  }
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
 
-  .content {
-    background-color: blueviolet;
-    margin-top: 1px;
-    min-height: 80vh;
-    width: 95vw;
-    display: flex;
-    margin: 0 auto;
-  }
+  height: auto;
+  z-index: -100;
+}
+
+* {
+  opacity: 0.90;
+}
+
+.content {
+  margin-top: 1px;
+  min-height: 80vh;
+  width: 95vw;
+  margin: 0 auto;
+}

@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatListModule } from '@angular/material/list'
+import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCardModule } from '@angular/material/card';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
@@ -18,6 +20,9 @@ import { ApiModule } from "./calculator/api/api.module";
 import { environment } from 'src/environments/environment';
 import { BASE_PATH } from './calculator/api/variables';
 import { HttpClientModule } from '@angular/common/http';
+import { FormatPipe } from './calculator/formatpipe';
+import { MatInputModule } from '@angular/material/input'
+import { MatButtonModule } from "@angular/material/button";
 
 const routes: Routes = [
   { path: 'info', component: WelcomeComponent },
@@ -32,18 +37,23 @@ const routes: Routes = [
     FooterComponent,
     WelcomeComponent,
     CalculatorComponent,
-    ContactComponent
+    ContactComponent,
+    FormatPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatListModule,
     MatTabsModule,
+    MatFormFieldModule,
     MatCardModule,
     RouterModule.forRoot(routes),
     ApiModule,
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [{ provide: BASE_PATH, useValue: environment.API_BASE_PATH }],
   bootstrap: [AppComponent]
