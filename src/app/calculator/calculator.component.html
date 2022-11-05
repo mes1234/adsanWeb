@@ -1,8 +1,8 @@
 <div ngClass="calc-layout">
 
     <mat-card>
-        <mat-card-header>Kalkulator
-        </mat-card-header>
+        <mat-card-title>Kalkulator
+        </mat-card-title>
         <mat-card-content>
             Poniższy kalkulator służy do wstępnego doboru wielkości suchego ogrodu deszczowego.
         </mat-card-content>
@@ -11,7 +11,7 @@
 
     <div ngClass="calc-forms-layout">
         <mat-card ngClass="calc-forms-layout-item">
-            <mat-card-header>Parametry</mat-card-header>
+            <mat-card-title>Parametry</mat-card-title>
             <mat-card-content>
                 <form [formGroup]="inputForm" ngClass="calc-input-layout" (ngSubmit)="sendToCalculatorFunction()">
 
@@ -58,32 +58,58 @@
         </mat-card>
 
         <mat-card ngClass="calc-forms-layout-item">
-            <mat-card-header>Wyniki</mat-card-header>
+            <mat-card-title>Wyniki</mat-card-title>
             <mat-card-content>
-                <div>
+                <div ngClass="calc-results-layout">
                     <p>{{calculationState}}</p>
                     <p>{{calculationStatus}}</p>
 
-                    <mat-list>
-                        <mat-list-item>Minimalna Powierzchnia: {{results.minPowierzchnia | format}} [m/s2]
-                        </mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item>Objętość opadu dla pierwszej fali: {{results.objetoscOpaduPierwszaFala | format}}
-                            [m/s2]</mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item>Objętość opadu dla I=130 [dm³/s·ha]: {{results.objetoscOpadu130lsha | format}}
-                            [m/s2]</mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item>Objętość opadu dla I=300 [dm³/s·ha]: {{results.objetoscOpadu300lsha | format}}
-                            [m/s2]</mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item>Objętość ogrodu deszczowego: {{results.objetoscOgroduDeszczowego | format}}
-                            [m/s2]</mat-list-item>
-                    </mat-list>
+                    <mat-card>
+                        <mat-card-header>
+                            <strong>{{results.minPowierzchnia | format}}</strong>
+                        </mat-card-header>
+                        <mat-card-content>
+                            Minimalna Powierzchnia: [m/s²]
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card>
+                        <mat-card-header>
+                            <strong>{{results.objetoscOpaduPierwszaFala | format}}</strong>
+                        </mat-card-header>
+                        <mat-card-content>
+                            Objętość opadu dla pierwszej fali: [m/s²]
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card>
+                        <mat-card-header>
+                            <strong>{{results.objetoscOpadu130lsha | format}}</strong>
+                        </mat-card-header>
+                        <mat-card-content>
+                            Objętość opadu dla I=130 [m/s²]
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card>
+                        <mat-card-header>
+                            <strong>{{results.objetoscOpadu300lsha | format}}</strong>
+                        </mat-card-header>
+                        <mat-card-content>
+                            Objętość opadu dla I=300 [m/s²]
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card>
+                        <mat-card-header>
+                            <strong>{{results.objetoscOgroduDeszczowego | format}}</strong>
+                        </mat-card-header>
+                        <mat-card-content>
+                            Objętość ogrodu deszczowego: [m/s²]
+                        </mat-card-content>
+                    </mat-card>
                 </div>
             </mat-card-content>
         </mat-card>
     </div>
+
+
 
     <div>
         <mat-card>

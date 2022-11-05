@@ -1,17 +1,20 @@
 <div ngClass="contact-layout">
 
     <mat-card ngClass="contact-forms-layout-item">
-        <mat-card-header>
+        <mat-card-title>
             Kontakt
-        </mat-card-header>
+        </mat-card-title>
         <mat-card-content>
             <mat-list>
                 <mat-list-item>
-                    biuro.adsan@gmail.com
+                    <mat-icon fontIcon="email"></mat-icon>
+                    &nbsp; &nbsp; biuro.adsan@gmail.com
+
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
-                    660 094 560
+                    <mat-icon fontIcon="phone"></mat-icon>
+                    &nbsp; &nbsp; 660 094 560
                 </mat-list-item>
                 <mat-divider></mat-divider>
             </mat-list>
@@ -19,9 +22,9 @@
     </mat-card>
 
     <mat-card ngClass="contact-forms-layout-item">
-        <mat-card-header>
+        <mat-card-title>
             Social media
-        </mat-card-header>
+        </mat-card-title>
         <mat-card-content>
             <div className="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light"
                 data-type="VERTICAL" data-vanity="anna-dąbrowicz-94554546" data-version="v1"></div>
@@ -29,3 +32,5 @@
     </mat-card>
 
 </div>
+
+<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>

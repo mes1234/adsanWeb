@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormatPipe } from './calculator/formatpipe';
 import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from '@angular/material/icon';
 
 const routes: Routes = [
   { path: 'info', component: WelcomeComponent },
@@ -53,7 +54,8 @@ const routes: Routes = [
     ApiModule,
     HttpClientModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [{ provide: BASE_PATH, useValue: environment.API_BASE_PATH }],
   bootstrap: [AppComponent]

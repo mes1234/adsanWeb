@@ -28,6 +28,10 @@
   flex-basis: 0;
 }
 
+.calc-results-layout {
+  display: flex;
+  flex-direction: column;
+}
 
 
 .calc-input-layout {
