@@ -3,7 +3,6 @@
   justify-content: left;
   border-radius: 0;
   text-align: left;
-  opacity: 0.95;
 }
 
 .calc-layout {
@@ -16,18 +15,20 @@
   flex-direction: row;
 }
 
-.calc-forms-layout-item {
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 0;
-}
-
 @media all and (max-width: 800px) {
   .calc-forms-layout {
     display: flex;
     flex-direction: column;
   }
 }
+
+.calc-forms-layout-item {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+}
+
+
 
 .calc-input-layout {
   display: flex;

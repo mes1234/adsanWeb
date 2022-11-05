@@ -3,5 +3,24 @@
     justify-content: left;
     border-radius: 0;
     text-align: left;
-    opacity: 0.95;
+}
+
+.contact-layout {
+    display: flex;
+    flex-direction: row;
+    min-height: 50vh;
+}
+
+@media all and (max-width: 800px) {
+    .contact-layout {
+        display: flex;
+        flex-direction: column;
+        min-height: 50vh;
+    }
+}
+
+.contact-forms-layout-item {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
 }
