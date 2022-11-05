@@ -1,17 +1,16 @@
 <div ngClass="calc-layout">
-    <div>
-        <mat-card>
-            <mat-card-header>
-                kalkulator
-            </mat-card-header>
-            <mat-card-content>
-                Poniższy kalkulator służy do wstępnego doboru wielkości suchego ogrodu deszczowego.
-            </mat-card-content>
-        </mat-card>
-    </div>
+
+    <mat-card>
+        <mat-card-header>Kalkulator
+        </mat-card-header>
+        <mat-card-content>
+            Poniższy kalkulator służy do wstępnego doboru wielkości suchego ogrodu deszczowego.
+        </mat-card-content>
+    </mat-card>
+
 
     <div ngClass="calc-forms-layout">
-        <mat-card ngClass="form-card">
+        <mat-card ngClass="calc-forms-layout-item">
             <mat-card-header>Parametry</mat-card-header>
             <mat-card-content>
                 <form [formGroup]="inputForm" ngClass="calc-input-layout" (ngSubmit)="sendToCalculatorFunction()">
@@ -58,10 +57,10 @@
             </mat-card-content>
         </mat-card>
 
-        <mat-card ngClass="form-card">
+        <mat-card ngClass="calc-forms-layout-item">
             <mat-card-header>Wyniki</mat-card-header>
             <mat-card-content>
-                <div ngClass="calc-input-layout">
+                <div>
                     <p>{{calculationState}}</p>
                     <p>{{calculationStatus}}</p>
 
@@ -82,9 +81,6 @@
                             [m/s2]</mat-list-item>
                     </mat-list>
                 </div>
-
-
-
             </mat-card-content>
         </mat-card>
     </div>
