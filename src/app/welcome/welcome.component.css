@@ -1,32 +1,4 @@
-* {
-    gap: 0.5rem;
-    justify-content: left;
-    border-radius: 0;
-    text-align: justify;
-}
-
-.welcome-layout {
-    display: flex;
-    flex-direction: row;
-    min-height: 30vh;
-}
-
-@media all and (max-width: 800px) {
-    .welcome-layout {
-        display: flex;
-        flex-direction: column;
-        min-height: 30vh;
-    }
-}
-
-.welcome-forms-layout-item {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0;
-}
-
-.welcome-image-common {
-    opacity: 0.99 !important;
-    width: 200px;
-    height: auto;
+.photo {
+    max-height: 200px;
+    width: auto;
 }

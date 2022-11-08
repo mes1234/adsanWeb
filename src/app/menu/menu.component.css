@@ -1,26 +1,4 @@
-.menu {
-  /* display: flex; */
-  /* background-color: #eee; */
-  /* align-items: stretch;  */
-}
-
-.active-link {
-  color: #F20B22;
-}
-
-.menu {
-  background-color: white;
-  align-self: flex-start;
-  flex-direction: row;
+.parent {
   display: flex;
-  font-size: large;
-  margin: 0 0 5px;
-  text-align: left;
-}
-
-.menu-logo {
-  padding-left: 20px;
-  font-size: small;
-  text-align: left;
-  line-height: 1.5em;
+  flex-direction: row;
 }

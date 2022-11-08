@@ -1,4 +1,4 @@
-<div ngClass="calc-layout">
+<div>
 
     <mat-card>
         <mat-card-title>Kalkulator
@@ -9,11 +9,11 @@
     </mat-card>
 
 
-    <div ngClass="calc-forms-layout">
-        <mat-card ngClass="calc-forms-layout-item">
+    <div>
+        <mat-card>
             <mat-card-title>Parametry</mat-card-title>
             <mat-card-content>
-                <form [formGroup]="inputForm" ngClass="calc-input-layout" (ngSubmit)="sendToCalculatorFunction()">
+                <form [formGroup]="inputForm" (ngSubmit)="sendToCalculatorFunction()">
 
                     <mat-form-field appearance="standard">
                         <mat-label>Powierzchnia zlewni</mat-label>
@@ -57,10 +57,10 @@
             </mat-card-content>
         </mat-card>
 
-        <mat-card ngClass="calc-forms-layout-item">
+        <mat-card>
             <mat-card-title>Wyniki</mat-card-title>
             <mat-card-content>
-                <div ngClass="calc-results-layout">
+                <div>
                     <p>{{calculationState}}</p>
                     <p>{{calculationStatus}}</p>
 
