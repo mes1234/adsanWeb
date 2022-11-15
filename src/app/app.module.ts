@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'info', component: WelcomeComponent },
   { path: 'kalkulator', component: CalculatorComponent },
   { path: 'kontakt', component: ContactComponent },
+  { path: '', component: WelcomeComponent },
 ];
 
 @NgModule({

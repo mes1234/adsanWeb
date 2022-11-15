@@ -1,4 +1,10 @@
-.parent {
+.menu-parent {
   display: flex;
   flex-direction: row;
+  align-items: flex-end;
+  justify-content: start;
+}
+
+.mat-card {
+  padding: 0;
 }

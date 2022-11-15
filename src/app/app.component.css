@@ -14,23 +14,27 @@
 .parent {
   display: flex;
   flex-direction: column;
-  align-content: space-between;
+  justify-content: space-between;
+  min-height: 100vh;
+  gap: 2px;
 }
 
-.menu {
-  max-height: 10vh;
-  min-height: 10vh;
-  background-color: brown;
+* {
+  opacity: 0.90;
 }
 
 .content {
-  overflow-y: scroll;
-  max-height: 80vh;
-  min-height: 80vh;
+  overflow-y: auto;
+  max-height: 85vh;
+  min-height: 85vh;
+  max-width: 95vw;
+  min-width: 95vw;
+  align-self: center;
 }
 
-.footer {
-  max-height: 10vh;
-  min-height: 10vh;
-  background-color: brown;
+@media all and (min-width:900px) {
+  .content {
+    max-width: 70vw;
+    min-width: 70vw;
+  }
 }
