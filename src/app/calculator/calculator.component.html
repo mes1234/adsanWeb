@@ -10,44 +10,40 @@
 
     <mat-card>
         <mat-card-title>Parametry</mat-card-title>
-        <mat-card-content>
+        <mat-card-content ngClass="calc-inputs">
             <form [formGroup]="inputForm" (ngSubmit)="sendToCalculatorFunction()">
 
-                <mat-form-field appearance="standard">
-                    <mat-label>Powierzchnia zlewni</mat-label>
+                <mat-form-field appearance="outline">
+                    <mat-label>Powierzchnia zlewni [m²]</mat-label>
                     <input matInput id="powierzchniaZlewni" type="number" formControlName="powierzchniaZlewni">
-                    <mat-hint>[m²]</mat-hint>
+
                 </mat-form-field>
 
-                <mat-form-field appearance="standard">
-                    <mat-label>Głębokość wolna </mat-label>
+                <mat-form-field appearance="outline">
+                    <mat-label>Głębokość wolna [m]</mat-label>
                     <input matInput id="glebokoscWolna" type="number" formControlName="glebokoscWolna">
-                    <mat-hint>[m]</mat-hint>
+
                 </mat-form-field>
 
-                <mat-form-field appearance="standard">
-                    <mat-label>Głębokość ogrodu deszczowego </mat-label>
+                <mat-form-field appearance="outline">
+                    <mat-label>Głębokość ogrodu deszczowego [m]</mat-label>
                     <input matInput id="glebokoscOgroduDeszczowego" type="number"
                         formControlName="glebokoscOgroduDeszczowego">
-                    <mat-hint>[m]</mat-hint>
                 </mat-form-field>
 
-                <mat-form-field appearance="standard">
-                    <mat-label>Wielkość spływu Q dla I=15</mat-label>
+                <mat-form-field appearance="outline">
+                    <mat-label>Wielkość spływu Q dla I=15 [dm³/s·ha]</mat-label>
                     <input matInput id="qSplywuDla15lsha" type="number" formControlName="qSplywuDla15lsha">
-                    <mat-hint>[dm³/s·ha]</mat-hint>
                 </mat-form-field>
 
-                <mat-form-field appearance="standard">
-                    <mat-label>Wielkość spływu Q dla I=130</mat-label>
+                <mat-form-field appearance="outline">
+                    <mat-label>Wielkość spływu Q dla I=130 [dm³/s·ha]</mat-label>
                     <input matInput id="qSplywuDla130lsha" type="number" formControlName="qSplywuDla130lsha">
-                    <mat-hint>[dm³/s·ha]</mat-hint>
                 </mat-form-field>
 
-                <mat-form-field appearance="standard">
-                    <mat-label>Wielkość spływu Q dla I=300</mat-label>
+                <mat-form-field appearance="outline">
+                    <mat-label>Wielkość spływu Q dla I=300 [dm³/s·ha]</mat-label>
                     <input matInput id="qSplywuDla300lsha" type="number" formControlName="qSplywuDla300lsha">
-                    <mat-hint>[dm³/s·ha]</mat-hint>
                 </mat-form-field>
                 <br>
                 <br>

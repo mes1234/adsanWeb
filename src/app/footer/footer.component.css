@@ -1,4 +1,9 @@
 * {
     /* background-color: blue; */
     text-align: center;
+
+}
+
+.mat-card {
+    padding: 5px;
 }

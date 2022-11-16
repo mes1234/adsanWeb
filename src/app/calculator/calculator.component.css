@@ -3,3 +3,18 @@
     flex-direction: column;
     gap: 2px;
 }
+
+.calc-inputs {
+    font-size: large;
+}
+
+.mat-form-field {
+    width: 33%;
+}
+
+@media only screen and (max-width: 600px) {
+    .mat-form-field {
+        width: 100%;
+    }
+
+}
