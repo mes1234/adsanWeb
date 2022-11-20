@@ -1,0 +1,8 @@
+.photo {
+    max-height: 200px;
+    width: auto;
+}
+
+.mat-card-content {
+    text-align: justify;
+}

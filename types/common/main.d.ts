@@ -1,3 +1,0 @@
-interface IWelcome {
-    name?: string;
-  }
