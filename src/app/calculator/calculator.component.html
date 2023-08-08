@@ -1,0 +1,114 @@
+<div ngClass="calc-parent">
+
+    <mat-card>
+        <mat-card-title>Kalkulator
+        </mat-card-title>
+        <mat-card-content>
+            Poniższy kalkulator służy do wstępnego doboru wielkości suchego ogrodu deszczowego.
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-title>Parametry</mat-card-title>
+        <mat-card-content ngClass="calc-inputs">
+            <form [formGroup]="inputForm" (ngSubmit)="sendToCalculatorFunction()">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Powierzchnia zlewni [m²]</mat-label>
+                    <input matInput id="powierzchniaZlewni" type="number" formControlName="powierzchniaZlewni">
+
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Głębokość wolna [m]</mat-label>
+                    <input matInput id="glebokoscWolna" type="number" formControlName="glebokoscWolna">
+
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Głębokość ogrodu deszczowego [m]</mat-label>
+                    <input matInput id="glebokoscOgroduDeszczowego" type="number"
+                        formControlName="glebokoscOgroduDeszczowego">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Wielkość spływu Q dla I=15 [dm³/s·ha]</mat-label>
+                    <input matInput id="qSplywuDla15lsha" type="number" formControlName="qSplywuDla15lsha">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Wielkość spływu Q dla I=130 [dm³/s·ha]</mat-label>
+                    <input matInput id="qSplywuDla130lsha" type="number" formControlName="qSplywuDla130lsha">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Wielkość spływu Q dla I=300 [dm³/s·ha]</mat-label>
+                    <input matInput id="qSplywuDla300lsha" type="number" formControlName="qSplywuDla300lsha">
+                </mat-form-field>
+                <br>
+                <br>
+                <button mat-raised-button color="accent" type="submit">Oblicz</button>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-title>Wyniki</mat-card-title>
+        <mat-card-content>
+            <div>
+                <p>{{calculationState}}</p>
+                <p>{{calculationStatus}}</p>
+
+                <mat-card>
+                    <mat-card-header>
+                        <strong>{{results.minPowierzchnia | format}}</strong>
+                    </mat-card-header>
+                    <mat-card-content>
+                        Minimalna Powierzchnia: [m/s²]
+                    </mat-card-content>
+                </mat-card>
+                <mat-card>
+                    <mat-card-header>
+                        <strong>{{results.objetoscOpaduPierwszaFala | format}}</strong>
+                    </mat-card-header>
+                    <mat-card-content>
+                        Objętość opadu dla pierwszej fali: [m/s²]
+                    </mat-card-content>
+                </mat-card>
+                <mat-card>
+                    <mat-card-header>
+                        <strong>{{results.objetoscOpadu130lsha | format}}</strong>
+                    </mat-card-header>
+                    <mat-card-content>
+                        Objętość opadu dla I=130 [m/s²]
+                    </mat-card-content>
+                </mat-card>
+                <mat-card>
+                    <mat-card-header>
+                        <strong>{{results.objetoscOpadu300lsha | format}}</strong>
+                    </mat-card-header>
+                    <mat-card-content>
+                        Objętość opadu dla I=300 [m/s²]
+                    </mat-card-content>
+                </mat-card>
+                <mat-card>
+                    <mat-card-header>
+                        <strong>{{results.objetoscOgroduDeszczowego | format}}</strong>
+                    </mat-card-header>
+                    <mat-card-content>
+                        Objętość ogrodu deszczowego: [m/s²]
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-content>
+            Jest to uproszczony kalkulator doboru suchego ogrodu deszczowego. Nie uwzględnia czynników, jak:
+            infiltracja, straty przepływu, odparowywanie itp.
+            Wykonane na bazie wytycznych miasta Londyn.
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,47 @@
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+
+  height: auto;
+  z-index: -100;
+}
+
+@media only screen and (max-width: 600px) {
+  .bg {
+
+    margin-left: -312px;
+  }
+}
+
+.parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  gap: 2px;
+}
+
+* {
+  opacity: 0.90;
+}
+
+.content {
+  overflow-y: auto;
+  max-height: 85vh;
+  min-height: 85vh;
+  max-width: 95vw;
+  min-width: 95vw;
+  align-self: center;
+}
+
+@media all and (min-width:900px) {
+  .content {
+    max-width: 70vw;
+    min-width: 70vw;
+  }
+}
